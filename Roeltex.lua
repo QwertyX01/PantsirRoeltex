@@ -1,6 +1,89 @@
 -- ============================================
---   Rooeltex — Obsidian v20
---   Фиолетовая тема + все функции
+--   Rooeltex — Obsidian v20 + BYPASS
+-- ============================================
+
+-- ============================================
+--   BYPASS (LITE) — запускается ПЕРВЫМ
+-- ============================================
+
+local Secure = {
+    pcall       = pcall,
+    getfenv     = getfenv,
+    type        = type,
+    newcclosure = newcclosure,
+    getgenv     = getgenv,
+    _G          = _G,
+}
+
+local function getSafeGenv()
+    local ok, genv = pcall(function()
+        if Secure.getgenv then return Secure.getgenv() end
+        return Secure._G
+    end)
+    if ok and type(genv) == "table" then return genv end
+    return Secure._G
+end
+
+local GENV = getSafeGenv()
+
+local function safeSet(key, value)
+    pcall(function()
+        if GENV then GENV[key] = value end
+    end)
+end
+
+local original_getfenv = Secure.getfenv
+local getfenv_wrapped = false
+
+pcall(function()
+    if not original_getfenv then return end
+    local function wrapper(level)
+        local ok, env = pcall(original_getfenv, level)
+        if ok and type(env) == "table" then
+            pcall(function()
+                env.getgenv           = nil
+                env.getrenv           = nil
+                env.getreg            = nil
+                env.syn               = nil
+                env.KRNL_LOADED       = nil
+                env.secure_call       = nil
+                env.getrawmetatable   = nil
+                env.hookmetamethod    = nil
+                env.hookfunction      = nil
+                env.getnamecallmethod = nil
+                env.checkcaller       = nil
+            end)
+        end
+        return env
+    end
+    if Secure.newcclosure then
+        getfenv = Secure.newcclosure(wrapper)
+        getfenv_wrapped = true
+    else
+        getfenv = wrapper
+        getfenv_wrapped = true
+    end
+end)
+
+pcall(function()
+    if not _G then return end
+    _G.getgenv         = nil
+    _G.getrenv         = nil
+    _G.hookmetamethod  = nil
+    _G.hookfunction    = nil
+    _G.getrawmetatable = nil
+    _G.getnamecallmethod = nil
+end)
+
+safeSet("_RooeltexBypassLite", getfenv_wrapped)
+
+print("═══════════════════════════════")
+print("🛡️ BYPASS v3 (LITE)")
+print("   getfenv:", getfenv_wrapped and "✅" or "⚠️")
+print("═══════════════════════════════")
+
+-- ============================================
+--   ОСНОВНОЙ ЧИТ
 -- ============================================
 
 local Players           = game:GetService("Players")
@@ -82,20 +165,15 @@ local STATE = {
     hitboxEnabled    = false,
     hitboxSize       = 15,
     hitboxVisible    = true,
-    -- NEW FUNC
     autoFarmEnabled  = false,
     autoFarmRadius   = 500,
     spinBotEnabled   = false,
     spinBotSpeed     = 20,
-    fullAutoEnabled  = false,
-    fullAutoDelay    = 0.1,
     aimbotEnabled    = false,
     aimbotFov        = 300,
     aimbotSmooth     = 0.2,
     flightEnabled    = false,
     flightSpeed      = 100,
-    rocketCounter    = 0,
-    droneCounter     = 0,
 }
 
 -- ============================================
@@ -708,76 +786,64 @@ local function stopKillRockets()
 end
 
 -- ============================================
---   HITBOX EXPANDER (отдельный парт!)
+--   HITBOX EXPANDER (реальные парты + bypass)
 -- ============================================
 
-local hitboxParts = {}
-local hitboxHighlights = {}
+local hitboxOriginal = {}
+local hitboxConnection = nil
 
-local function createHitboxPart(drone)
-    local root = findDroneRoot(drone)
-    if not root then return end
-
-    local existing = hitboxParts[drone]
-    if existing and existing.Parent then
-        existing.Size = Vector3.new(STATE.hitboxSize, STATE.hitboxSize, STATE.hitboxSize)
-        existing.CFrame = root.CFrame
-        return
+local function expandPart(part)
+    if not part:IsA("BasePart") then return end
+    if not hitboxOriginal[part] then
+        hitboxOriginal[part] = {
+            Size         = part.Size,
+            CanCollide   = part.CanCollide,
+            CanQuery     = part.CanQuery,
+            CanTouch     = part.CanTouch,
+            Transparency = part.Transparency,
+            Massless     = part.Massless,
+        }
     end
-
-    local hb = Instance.new("Part")
-    hb.Name = "Rooeltex_Hitbox"
-    hb.Size = Vector3.new(STATE.hitboxSize, STATE.hitboxSize, STATE.hitboxSize)
-    hb.CFrame = root.CFrame
-    hb.Anchored = true
-    hb.CanCollide = false
-    hb.CanQuery = true
-    hb.CanTouch = true
-    hb.Massless = true
-    hb.Material = Enum.Material.ForceField
-    hb.Color = Color3.fromRGB(255, 0, 0)
-    hb.Transparency = 0.7
-    hb.Parent = drone
-    hitboxParts[drone] = hb
-
-    if STATE.hitboxVisible then
-        local hl = Instance.new("Highlight")
-        hl.Name = "RooeltexHitboxVisual"
-        hl.Adornee = hb
-        hl.FillColor = Color3.fromRGB(255, 30, 30)
-        hl.FillTransparency = 0.5
-        hl.OutlineColor = Color3.fromRGB(255, 0, 0)
-        hl.OutlineTransparency = 0
-        hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-        hl.Parent = CoreGui
-        hitboxHighlights[drone] = hl
-    end
+    local s = STATE.hitboxSize
+    part.Size       = Vector3.new(s, s, s)
+    part.CanCollide = false
+    part.CanQuery   = true
+    part.CanTouch   = true
 end
 
-local function removeHitboxPart(drone)
-    local hb = hitboxParts[drone]
-    if hb then hb:Destroy(); hitboxParts[drone] = nil end
-    local hl = hitboxHighlights[drone]
-    if hl then hl:Destroy(); hitboxHighlights[drone] = nil end
+local function restorePart(part)
+    if not part or not part.Parent then return end
+    local o = hitboxOriginal[part]
+    if not o then return end
+    part.Size         = o.Size
+    part.CanCollide   = o.CanCollide
+    part.CanQuery     = o.CanQuery
+    part.CanTouch     = o.CanTouch
+    part.Transparency = o.Transparency
+    part.Massless     = o.Massless
 end
 
 local function applyHitbox()
     local list = getAllDrones()
     for _, entry in ipairs(list) do
-        createHitboxPart(entry.drone)
+        local drone = entry.drone
+        local root = findDroneRoot(drone)
+        if root then
+            -- Меняем только Root, чтобы ESP не застывал
+            expandPart(root)
+        end
     end
 end
 
 local function stopHitbox()
-    for drone, _ in pairs(hitboxParts) do
-        removeHitboxPart(drone)
+    for part, _ in pairs(hitboxOriginal) do
+        restorePart(part)
     end
-    hitboxParts = {}
-    hitboxHighlights = {}
+    hitboxOriginal = {}
 end
 
 task.spawn(function()
-    while task.wait(0.1) do
+    while task.wait(0.15) do
         if STATE.hitboxEnabled then
             applyHitbox()
         end
@@ -788,7 +854,6 @@ end)
 --   MISC FUNCTIONS
 -- ============================================
 
--- SPEED
 local speedConnection = nil
 local originalWalkSpeed = 16
 
@@ -826,7 +891,6 @@ local function stopSpeed()
     end
 end
 
--- JUMP
 local jumpConnection = nil
 local originalJumpPower = 50
 
@@ -870,15 +934,13 @@ local function stopJump()
     end
 end
 
--- INFINITE JUMP
 local infJumpConnection = nil
 
 local function startInfJump()
     if infJumpConnection then return end
     infJumpConnection = UserInputService.JumpRequest:Connect(function()
         if not STATE.infJumpEnabled then return end
-        local char = player.Character
-        if not char then return end
+        local char = player.Character        if not char then return end
         local hum = char:FindFirstChildOfClass("Humanoid")
         if hum then hum:ChangeState(Enum.HumanoidStateType.Jumping) end
     end)
@@ -888,7 +950,6 @@ local function stopInfJump()
     if infJumpConnection then infJumpConnection:Disconnect(); infJumpConnection = nil end
 end
 
--- NOCLIP
 local noclipConnection = nil
 
 local function startNoclip()
@@ -915,7 +976,6 @@ local function stopNoclip()
     end
 end
 
--- ANTI-AFK
 local antiAfkConnection = nil
 
 local function startAntiAfk()
@@ -932,7 +992,6 @@ local function stopAntiAfk()
     if antiAfkConnection then antiAfkConnection:Disconnect(); antiAfkConnection = nil end
 end
 
--- 🆕 SPIN BOT (быстрое вращение персонажа)
 local spinBotConnection = nil
 
 local function startSpinBot()
@@ -951,13 +1010,11 @@ local function stopSpinBot()
     if spinBotConnection then spinBotConnection:Disconnect(); spinBotConnection = nil end
 end
 
--- 🆕 AUTO FARM (телепорт к ближайшему дрону и убийство)
 local autoFarmRunning = false
 
 local function startAutoFarm()
     if autoFarmRunning then return end
     autoFarmRunning = true
-
     while STATE.autoFarmEnabled do
         local char = player.Character
         if char then
@@ -966,7 +1023,6 @@ local function startAutoFarm()
                 local drones = getAllDrones()
                 local closest = nil
                 local minDist = STATE.autoFarmRadius
-
                 for _, d in ipairs(drones) do
                     local dist = (d.root.Position - hrp.Position).Magnitude
                     if dist < minDist then
@@ -974,7 +1030,6 @@ local function startAutoFarm()
                         closest = d
                     end
                 end
-
                 if closest then
                     hrp.CFrame = CFrame.new(closest.root.Position + Vector3.new(0, 5, 0))
                     hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
@@ -990,7 +1045,6 @@ local function stopAutoFarm()
     STATE.autoFarmEnabled = false
 end
 
--- 🆕 AIMBOT (поворот камеры к ближайшему дрону)
 local aimbotConnection = nil
 
 local function startAimbot()
@@ -1001,11 +1055,9 @@ local function startAimbot()
         if not char then return end
         local hrp = char:FindFirstChild("HumanoidRootPart")
         if not hrp then return end
-
         local drones = getAllDrones()
         local closest = nil
         local minAngle = STATE.aimbotFov
-
         for _, d in ipairs(drones) do
             local dir = (d.root.Position - camera.CFrame.Position).Unit
             local look = camera.CFrame.LookVector
@@ -1018,7 +1070,6 @@ local function startAimbot()
                 end
             end
         end
-
         if closest then
             local targetCF = CFrame.new(camera.CFrame.Position, closest.root.Position)
             camera.CFrame = camera.CFrame:Lerp(targetCF, STATE.aimbotSmooth)
@@ -1028,83 +1079,6 @@ end
 
 local function stopAimbot()
     if aimbotConnection then aimbotConnection:Disconnect(); aimbotConnection = nil end
-end
-
--- 🆕 FLIGHT (плавный полёт с WASD и пробелом)
-local flightConnection = nil
-
-local function startFlight()
-    if flightConnection then return end
-    local char = player.Character
-    if not char then return end
-    local hrp = char:FindFirstChild("HumanoidRootPart")
-    if not hrp then return end
-
-    local bg = Instance.new("BodyGyro")
-    bg.Name = "FlightBG"
-    bg.MaxTorque = Vector3.new(1e5, 1e5, 1e5)
-    bg.P = 1000
-    bg.D = 50
-    bg.CFrame = hrp.CFrame
-    bg.Parent = hrp
-
-    local bv = Instance.new("BodyVelocity")
-    bv.Name = "FlightBV"
-    bv.MaxForce = Vector3.new(1e5, 1e5, 1e5)
-    bv.Velocity = Vector3.new(0, 0, 0)
-    bv.P = 1250
-    bv.Parent = hrp
-
-    for _, part in ipairs(char:GetDescendants()) do
-        if part:IsA("BasePart") then part.CanCollide = false end
-    end
-
-    local hum = char:FindFirstChildOfClass("Humanoid")
-    if hum then hum.PlatformStand = true end
-
-    flightConnection = RunService.RenderStepped:Connect(function()
-        if not STATE.flightEnabled then return end
-        local c = player.Character
-        if not c then return end
-        local h = c:FindFirstChild("HumanoidRootPart")
-        if not h then return end
-        if not bg.Parent or not bv.Parent then return end
-
-        local hm = c:FindFirstChildOfClass("Humanoid")
-        if not hm then return end
-
-        local moveDir = hm.MoveDirection
-        local velocity = moveDir * STATE.flightSpeed
-
-        if UserInputService:IsKeyDown(Enum.KeyCode.Space) then
-            velocity = velocity + Vector3.new(0, STATE.flightSpeed, 0)
-        end
-        if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then
-            velocity = velocity - Vector3.new(0, STATE.flightSpeed, 0)
-        end
-
-        bv.Velocity = velocity
-        bg.CFrame = camera.CFrame
-    end)
-end
-
-local function stopFlight()
-    if flightConnection then flightConnection:Disconnect(); flightConnection = nil end
-    local char = player.Character
-    if char then
-        local hrp = char:FindFirstChild("HumanoidRootPart")
-        if hrp then
-            local bg = hrp:FindFirstChild("FlightBG")
-            if bg then bg:Destroy() end
-            local bv = hrp:FindFirstChild("FlightBV")
-            if bv then bv:Destroy() end
-        end
-        local hum = char:FindFirstChildOfClass("Humanoid")
-        if hum then hum.PlatformStand = false end
-        for _, part in ipairs(char:GetDescendants()) do
-            if part:IsA("BasePart") then part.CanCollide = true end
-        end
-    end
 end
 
 -- ============================================
@@ -1222,7 +1196,6 @@ local function removeAllFor(drone)
     if line then line:Remove(); tracerData[drone] = nil end
     local hl = hlData[drone]
     if hl then hl:Destroy(); hlData[drone] = nil end
-    removeHitboxPart(drone)
 end
 
 task.spawn(function()
@@ -1246,7 +1219,6 @@ task.spawn(function()
             end
         end
         droneCache = list
-        STATE.droneCounter = #list
         local currentSet = {}
         for _, entry in ipairs(list) do
             currentSet[entry.drone] = true
@@ -1269,11 +1241,6 @@ task.spawn(function()
             if not currentSet[drone] or not drone.Parent
             or drone:GetAttribute("Destroyed") == true then
                 removeAllFor(drone)
-            end
-        end
-        for drone, _ in pairs(hitboxParts) do
-            if not drone.Parent or drone:GetAttribute("Destroyed") == true then
-                removeHitboxPart(drone)
             end
         end
     end
@@ -1556,7 +1523,7 @@ AimGroup:AddToggle("killAll", {
 })
 AimGroup:AddToggle("killRockets", {
     Text = "Kill Rockets", Default = false,
-    Tooltip = "Сбивает только ракеты (X101, Flamingo, Neptun, Kalibr, Tomahawk, Shadow, Ten)",
+    Tooltip = "Сбивает только ракеты",
     Callback = function(v)
         STATE.killRockets = v
         if v then
@@ -1592,6 +1559,7 @@ AimGroup:AddSlider("killDelay", {
 local HitboxGroup = Tabs.Aim:AddRightGroupbox("Hitbox Expander")
 HitboxGroup:AddToggle("hitbox", {
     Text = "Enable Hitbox", Default = false,
+    Tooltip = "⚠️ Может быть server-side. Если не работает — не используй",
     Callback = function(v)
         STATE.hitboxEnabled = v
         if not v then stopHitbox() end
@@ -1599,20 +1567,8 @@ HitboxGroup:AddToggle("hitbox", {
 })
 HitboxGroup:AddSlider("hitboxSize", {
     Text = "Hitbox Size", Default = 15,
-    Min = 2, Max = 60, Rounding = 1,
+    Min = 5, Max = 40, Rounding = 1,
     Callback = function(v) STATE.hitboxSize = v end,
-})
-HitboxGroup:AddToggle("hitboxVisible", {
-    Text = "Show Hitbox (Red)", Default = true,
-    Callback = function(v)
-        STATE.hitboxVisible = v
-        if not v then
-            for drone, _ in pairs(hitboxHighlights) do
-                local hl = hitboxHighlights[drone]
-                if hl then hl:Destroy(); hitboxHighlights[drone] = nil end
-            end
-        end
-    end,
 })
 
 -- ============================================
@@ -1621,27 +1577,14 @@ HitboxGroup:AddToggle("hitboxVisible", {
 
 local MiscGroup = Tabs.Misc:AddLeftGroupbox("Movement")
 MiscGroup:AddToggle("fly", {
-    Text = "Fly (Old)", Default = false,
+    Text = "Fly", Default = false,
     Callback = function(v)
         STATE.flyEnabled = v
         if v then startFly() else stopFly() end
     end,
 })
-MiscGroup:AddToggle("flight", {
-    Text = "Flight (New, WASD+Space+Shift)", Default = false,
-    Tooltip = "Space — вверх, LeftShift — вниз, WASD — движение",
-    Callback = function(v)
-        STATE.flightEnabled = v
-        if v then startFlight() else stopFlight() end
-    end,
-})
-MiscGroup:AddSlider("flightSpeed", {
-    Text = "Flight Speed", Default = 100,
-    Min = 20, Max = 300, Rounding = 1,
-    Callback = function(v) STATE.flightSpeed = v end,
-})
 MiscGroup:AddSlider("flySpeed", {
-    Text = "Fly Speed (Old)", Default = 60,
+    Text = "Fly Speed", Default = 60,
     Min = 20, Max = 200, Rounding = 1,
     Callback = function(v) STATE.flySpeed = v end,
 })
@@ -1700,7 +1643,6 @@ MiscGroup2:AddToggle("antiAfk", {
 })
 MiscGroup2:AddToggle("spinBot", {
     Text = "Spin Bot 🌀", Default = false,
-    Tooltip = "Крутит персонажа очень быстро",
     Callback = function(v)
         STATE.spinBotEnabled = v
         if v then startSpinBot() else stopSpinBot() end
@@ -1713,7 +1655,6 @@ MiscGroup2:AddSlider("spinBotSpeed", {
 })
 MiscGroup2:AddToggle("autoFarm", {
     Text = "Auto Farm 🎯", Default = false,
-    Tooltip = "Автоматически телепортируется к ближайшему дрону",
     Callback = function(v)
         STATE.autoFarmEnabled = v
         if v then task.spawn(startAutoFarm) else stopAutoFarm() end
@@ -1743,10 +1684,6 @@ MiscGroup2:AddButton({
         Library:Notify({ Title = "Misc", Content = "Кэш дронов очищен", Duration = 3 })
     end,
 })
-
--- Инфо-бокс с счётчиками
-local InfoGroup = Tabs.Misc:AddLeftGroupbox("Info")
-InfoGroup:AddLabel("Drones: " .. tostring(STATE.droneCounter))
 
 -- ============================================
 --   ESP DEFENDERS
@@ -1971,10 +1908,10 @@ end)
 Window:SelectTab(1)
 Library:Notify({
     Title = "Rooeltex",
-    Content = "v20 • Фиолетовая тема + все функции",
+    Content = "v20 + Bypass",
     Duration = 5,
 })
 print("═══════════════════════════════")
-print("✅ Rooeltex v20 загружен")
-print("🟣 Тема: Amethyst (фиолетовая)")
+print("✅ Rooeltex v20 + Bypass загружен")
+print("🛡️ Bypass:", getfenv_wrapped and "АКТИВЕН" or "НЕ АКТИВЕН")
 print("═══════════════════════════════")
