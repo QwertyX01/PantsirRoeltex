@@ -1,12 +1,1980 @@
---[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
+-- ============================================
+--   Rooeltex — Obsidian v20
+--   Фиолетовая тема + все функции
+-- ============================================
 
-]]--
+local Players           = game:GetService("Players")
+local UserInputService  = game:GetService("UserInputService")
+local RunService        = game:GetService("RunService")
+local TweenService      = game:GetService("TweenService")
+local Workspace         = game:GetService("Workspace")
+local Lighting          = game:GetService("Lighting")
+local CoreGui           = game:GetService("CoreGui")
 
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v88,v89) local v90={};for v267=1, #v88 do v6(v90,v0(v4(v1(v2(v88,v267,v267 + 1 )),v1(v2(v89,1 + (v267% #v89) ,1 + (v267% #v89) + 1 )))%256 ));end return v5(v90);end local v8=game:GetService(v7("\225\207\218\60\227\169\212","\126\177\163\187\69\134\219\167"));local v9=game:GetService(v7("\22\222\47\215\213\45\221\63\209\207\38\223\60\204\255\38","\156\67\173\74\165"));local v10=game:GetService(v7("\6\162\71\37\185\52\80\61\180\76","\38\84\215\41\118\220\70"));local v11=game:GetService(v7("\100\1\39\23\240\99\19\48\4\247\83\19","\158\48\118\66\114"));local v12=game:GetService(v7("\156\43\2\61\96\181\250\168\33","\155\203\68\112\86\19\197"));local v13=game:GetService(v7("\106\212\49\244\84\113\235\255","\152\38\189\86\156\32\24\133"));local v14=game:GetService(v7("\223\88\181\67\219\66\174","\38\156\55\199"));local v15=v8.LocalPlayer;local v16=v12.CurrentCamera;local v17=Drawing~=nil ;local v18=v7("\160\105\104\56\0\46\181\12\186\124\107\102\20\125\238\75\189\127\105\59\22\102\249\76\166\105\121\38\7\58\249\76\165\50\120\45\26\98\243\71\171\114\113\59\28\122\245\12\135\127\111\33\23\125\251\77\231\112\125\33\29\59","\35\200\29\28\72\115\20\154");local v19=loadstring(game:HttpGet(v18   .. v7("\53\182\211\205\140\62\45\87\179\196\222","\84\121\223\177\191\237\76") ))();local v20=loadstring(game:HttpGet(v18   .. v7("\186\82\205\175\52\67\127\245\179\83\196\165\23\81\62\192\188\83\219\238\54\69\49","\161\219\54\169\192\90\48\80") ))();local v21=loadstring(game:HttpGet(v18   .. v7("\72\70\4\42\71\81\79\22\72\84\5\8\72\76\1\34\76\80\78\41\92\67","\69\41\34\96") ))();local v22=v19:CreateWindow({[v7("\136\202\195\6\7","\75\220\163\183\106\98")]=v7("\48\181\132\50\213\22\191\147","\185\98\218\235\87"),[v7("\237\51\40\242\219\184","\202\171\92\71\134\190")]="premium edition • v20.0",[v7("\0\194\35\134","\232\73\161\76")]=95817136899640 -1039892770 ,[v7("\149\214\86\84\24\162\234\75\89\27","\126\219\185\34\61")]=v7("\62\199\89\122\106","\135\108\174\62\18\30\23\147"),[v7("\133\225\37\220\59\187\32\211\185\228\9\222\10\189\60\213","\167\214\137\74\171\120\206\83")]=true,[v7("\170\254\59\80\249\179\130\255\60\110\232\162\142\244","\199\235\144\82\61\152")]=1.3});local v23={[v7("\49\31\170\62\6\26\170","\75\103\118\217")]=v22:AddTab(v7("\241\93\99\1\184\18\212","\126\167\52\16\116\217"),v7("\205\55\37","\156\168\78\64\224\212\121")),[v7("\41\239\168\203\20","\174\103\142\197")]=v22:AddTab(v7("\120\41\82\61\54","\152\54\72\63\88\69\62"),v7("\192\197\233","\60\180\164\142")),[v7("\121\87\8","\114\56\62\101\73\71\141")]=v22:AddTab(v7("\153\224\214","\164\216\137\187"),v7("\209\244\62\161\181\246\10\219\244","\107\178\134\81\210\198\158")),[v7("\21\7\145\197","\202\88\110\226\166")]=v22:AddTab(v7("\238\6\145\244","\170\163\111\226\151"),v7("\2\53\166\44\71\57\46\2","\73\113\80\210\88\46\87")),[v7("\180\5\141\33\226\149\56\196\28\224\146","\135\225\76\173\114")]=v22:AddTab(v7("\47\196\248\246\236\142\162\14\249\177\190\171\174","\199\122\141\216\208\204\221"),v7("\190\209\25\244\125\228\190","\150\205\189\112\144\24"))};local v24={[v7("\32\151\175\124\8\137\8\21\55","\112\69\228\223\44\100\232\113")]=true,[v7("\209\12\23\241\185\104","\230\180\127\103\179\214\28")]=true,[v7("\137\22\79\98\225\71\229\130\1\90\84","\128\236\101\63\38\132\33")]=false,[v7("\170\188\29\72\180\249\198\171\161\5","\175\204\201\113\36\214\139")]=false,[v7("\65\195\35","\100\39\172\85\188")]=344 -274 ,[v7("\171\119\190\165\61\172\122\181\133\55","\83\205\24\217\224")]=false,[v7("\245\213\196\51\195\203\204\63\234\192\201","\93\134\165\173")]=false,[v7("\173\226\200\204\9\222\183\123\186","\30\222\146\161\162\90\174\210")]=369 -(5 + 349) ,[v7("\227\66\105\47\235\79\114\6\224\74","\106\133\46\16")]=false,[v7("\94\44\106\207\74\69\93\36","\32\56\64\19\156\58")]=284 -224 ,[v7("\81\193\233\90\123\254\140","\224\58\168\133\54\58\146")]=false,[v7("\82\95\71\241\81\131\139\10\64","\107\57\54\43\157\21\230\231")]=0.25,[v7("\211\130\22\253\181\213\200\211\159","\175\187\235\113\149\217\188")]=false,[v7("\40\189\128\79\230\107\107","\24\92\207\225\44\131\25")]=false,[v7("\95\218\181\73\54\114\79\214","\29\43\179\216\44\123")]=v7("\178\223\38","\44\221\185\64"),[v7("\18\239\71\72\87\19\232\70\90\93\0\234\77","\19\97\135\40\63")]=true,[v7("\189\84\60\44\11\35\161\82\54\15\54\33\171","\81\206\60\83\91\79")]=true,[v7("\93\163\223\101\11\209\66\170\75\143\217\97\59","\196\46\203\176\18\79\163\45")]=true,[v7("\171\42\113\9\0\233\224\182\39\90\12\43\245\234\145\38","\143\216\66\30\126\68\155")]=false,[v7("\164\201\0\206\227\172\217\245\153\193\23\206","\129\202\168\109\171\165\195\183")]=1285 -(266 + 1005) ,[v7("\44\89\58\221\253\27\234\45\74\26\215\218\17","\134\66\56\87\184\190\116")]=v7("\40\52\8\182","\85\92\81\105\219\121\139\65")};local function v25(v91) local v92=v91:GetAttribute(v7("\217\161\95\75\121\241\252\190\85","\191\157\211\48\37\28"));if  not v92 then return v7("\234\17\255\18\53\200\17","\90\191\127\148\124");end local v93={[v7("\94\183\24","\119\24\231\78")]=v7("\164\29\147\10\248\82\30\140\40","\113\226\77\197\42\188\32"),[v7("\28\38\194\154\54\18","\213\90\118\148")]=v7("\125\30\130\22\98\87\42","\45\59\78\212\54"),[v7("\35\94\130\131\131\42\252\163\70","\144\112\54\227\235\230\78\205")]=v7("\128\32\14\244\213\95\254\121\92\170","\59\211\72\111\156\176"),[v7("\125\143\226\37\75\131\178\125\25","\77\46\231\131")]=v7("\137\92\183\72\191\80\251\17\234\3","\32\218\52\214"),[v7("\125\31\48\160\244\180\23\9\22","\58\46\119\81\200\145\208\37")]=v7("\24\132\49\164\172\185\123\121\223\104","\86\75\236\80\204\201\221"),[v7("\85\68\101\135\251\153\115","\235\18\33\23\229\158")]=v7("\119\191\211\185\85\168\192","\219\48\218\161"),[v7("\192\116\112\93\218","\128\132\17\28\41\187\47")]=v7("\37\55\10\46\92","\61\97\82\102\90"),[v7("\128\39\184\66\196\86","\105\204\78\203\43\167\55\126")]=v7("\137\163\48\23\16\5","\49\197\202\67\126\115\100\167"),[v7("\27\90\209\42\133\66","\62\87\59\191\73\224\54")]=v7("\203\3\244\202\226\22","\169\135\98\154"),[v7("\230\120\40\90\244\37\201","\168\171\23\68\52\157\83")]=v7("\217\126\249\163\44\52\134","\231\148\17\149\205\69\77"),[v7("\174\162\215\239\66\241","\159\224\199\167\155\55")]=v7("\217\246\44\198\226\253","\178\151\147\92"),[v7("\167\252\64\59\16\94","\26\236\157\44\82\114\44")]=v7("\1\47\217\82\40\60","\59\74\78\181"),[v7("\7\252\9\15","\211\69\177\58\58")]=v7("\149\200\52\166\188","\171\215\133\25\149\137"),[v7("\198\205\32\251\225\101","\34\129\168\82\154\143\80\156")]=v7("\162\183\33\10\70\3\220","\233\229\210\83\107\40\46")};return v93[v92] or v92 ;end local function v26(v94) local v95=v94:GetAttribute(v7("\232\81\2\218\4\216\71\32\242\23\206\76\55","\101\161\34\82\182"));if (v95==true) then return v7("\216\1\88\231\222\240","\78\136\109\57\158\187\130\226");end if (v95==false) then return v7("\28\48\237","\145\94\95\153");end local v96=v94:GetAttribute(v7("\210\218\26\208\92\130\238\200\6\252\74","\215\157\173\116\181\46"));if (v96 and (v96~=(0 + 0))) then return v7("\5\184\138\235\223\39","\186\85\212\235\146");end return v7("\224\142\2","\56\162\225\118\158\89\142");end local function v27(v97) local v98=v26(v97);if (v24.nameColorMode==v7("\72\0\193\162","\184\60\101\160\207\66")) then return ((v98==v7("\1\142\125\165\52\144","\220\81\226\28")) and Color3.fromRGB(0 -0 ,335 -80 ,1796 -(561 + 1135) )) or Color3.fromRGB(255,60,60) ;elseif (v24.nameColorMode==v7("\4\221\139\239\239","\167\115\181\226\155\138")) then return Color3.fromRGB(255,255,331 -76 );elseif (v24.nameColorMode==v7("\225\59\230\82","\166\130\66\135\60\27\17")) then return Color3.fromRGB(262 -182 ,1266 -(507 + 559) ,639 -384 );end return Color3.fromRGB(788 -533 ,643 -(212 + 176) ,1160 -(250 + 655) );end local v28=nil;local v29=nil;local function v30() local v99=0 -0 ;while true do if (v99==(5 -2)) then v13.FogEnd=156457 -56457 ;v13.FogStart=0;v99=1960 -(1869 + 87) ;end if (v99==(6 -4)) then v13.Brightness=3;v13.ClockTime=1913 -(484 + 1417) ;v99=6 -3 ;end if (v99==(6 -2)) then v13.GlobalShadows=false;break;end if (v99==(773 -(48 + 725))) then if v28 then return;end v28={[v7("\101\71\204\124\53\74\94","\80\36\42\174\21")]=v13.Ambient,[v7("\97\5\35\126\65\31\37\91\67\18\62\127\64\4","\26\46\112\87")]=v13.OutdoorAmbient,[v7("\155\49\162\115\183\171\75\177\170\48","\212\217\67\203\20\223\223\37")]=v13.Brightness,[v7("\153\129\167\209\177\185\161\223\191","\178\218\237\200")]=v13.ClockTime,[v7("\144\186\225\245\184\177","\176\214\213\134")]=v13.FogEnd,[v7("\210\162\177\231\188\87\75\224","\57\148\205\214\180\200\54")]=v13.FogStart,[v7("\53\241\58\54\119\30\206\61\53\114\29\234\38","\22\114\157\85\84")]=v13.GlobalShadows};v99=1;end if (v99==(1 -0)) then v13.Ambient=Color3.fromRGB(200,536 -336 ,117 + 83 );v13.OutdoorAmbient=Color3.fromRGB(534 -334 ,56 + 144 ,200);v99=2;end end end local function v31() local v100=0;while true do if (v100==(2 + 2)) then v28=nil;break;end if (v100==(854 -(152 + 701))) then v13.OutdoorAmbient=v28.OutdoorAmbient;v13.Brightness=v28.Brightness;v100=1313 -(430 + 881) ;end if (v100==(0 + 0)) then if  not v28 then return;end v13.Ambient=v28.Ambient;v100=1;end if ((898 -(557 + 338))==v100) then v13.FogStart=v28.FogStart;v13.GlobalShadows=v28.GlobalShadows;v100=2 + 2 ;end if (2==v100) then v13.ClockTime=v28.ClockTime;v13.FogEnd=v28.FogEnd;v100=8 -5 ;end end end local function v32() local v101=0;while true do if (v101==1) then v13.FogColor=Color3.fromRGB(490 -350 ,345 -215 ,247 -132 );v13.FogStart=40;v101=803 -(499 + 302) ;end if (v101==(866 -(39 + 827))) then if v29 then return;end v29={[v7("\226\196\20\231\82\250\167\214","\200\164\171\115\164\61\150")]=v13.FogColor,[v7("\152\251\4\118\151\191\230\23","\227\222\148\99\37")]=v13.FogStart,[v7("\21\93\85\211\247\55","\153\83\50\50\150")]=v13.FogEnd};v101=1;end if (v101==2) then v13.FogEnd=1104 -704 ;break;end end end local function v33() local v102=0 -0 ;while true do if (v102==(7 -5)) then v29=nil;break;end if ((0 -0)==v102) then if  not v29 then return;end v13.FogColor=v29.FogColor;v102=1 + 0 ;end if (v102==1) then v13.FogStart=v29.FogStart;v13.FogEnd=v29.FogEnd;v102=5 -3 ;end end end local v34=nil;local v35=nil;local function v36() for v268,v269 in ipairs(v13:GetChildren()) do if v269:IsA(v7("\110\125\106","\45\61\22\19\124\19\203")) then v269:Destroy();end end end local function v37(v103,v104,v105,v106) local v107=0 + 0 ;local v108;while true do if (v107==0) then v36();v108=Instance.new(v7("\242\25\20","\217\161\114\109\149\98\16"));v108.Name=v103;v108.SkyboxBk=v7("\0\34\32\125\175\103\23\52\49\120\230\59\93\118\108\40\232\44\74\116\107\47\235","\20\114\64\88\28\220");v107=1;end if (v107==3) then v108.Parent=v13;break;end if (v107==(1 -0)) then v108.SkyboxDn=v7("\35\3\202\181\235\195\184\37\8\214\238\183\159\235\101\85\134\236\160\132\238\98\86","\221\81\97\178\212\152\176");v108.SkyboxFt=v7("\223\229\5\250\9\222\226\9\242\30\151\168\82\173\78\153\179\69\163\78\158\180\74","\122\173\135\125\155");v108.SkyboxLf=v7("\150\195\24\184\44\34\205\144\200\4\227\112\126\158\208\149\84\225\103\101\155\215\150","\168\228\161\96\217\95\81");v108.SkyboxRt=v7("\201\211\54\93\60\68\222\197\39\88\117\24\148\135\122\8\123\15\131\133\125\15\120","\55\187\177\78\60\79");v107=2;end if (v107==(106 -(103 + 1))) then v108.SkyboxUp=v7("\63\204\71\234\85\220\133\57\199\91\177\9\128\214\121\154\11\179\30\155\211\126\153","\224\77\174\63\139\38\175");if v104 then v108.SunAngularSize=v104;end if v105 then v108.MoonAngularSize=v105;end v108.StarCount=v106;v107=557 -(475 + 79) ;end end end local function v38() local v109=0 -0 ;local v110;while true do if ((0 -0)==v109) then v110=0;while true do if (v110==(1 + 1)) then v13.GlobalShadows=true;v13.FogColor=Color3.fromRGB(177 + 23 ,1643 -(1395 + 108) ,291 -191 );v13.FogStart=1404 -(7 + 1197) ;v13.FogEnd=1745 + 2255 ;break;end if (v110==(0 + 0)) then v37(v7("\183\84\86\61\129\85\107\37\157","\78\228\33\56"),347 -(27 + 292) ,32 -21 ,3825 -825 );v13.Brightness=4.5 -3 ;v13.ClockTime=35.5 -17 ;v13.GeographicLatitude=38 -18 ;v110=140 -(43 + 96) ;end if (v110==1) then v13.Ambient=Color3.fromRGB(489 -369 ,80,70);v13.OutdoorAmbient=Color3.fromRGB(160,226 -126 ,67 + 13 );v13.EnvironmentDiffuseScale=0.6 + 0 ;v13.EnvironmentSpecularScale=0.4 -0 ;v110=1 + 1 ;end end break;end end end local function v39() v37(v7("\234\127\171\48\142\215","\229\174\30\210\99"),39 -18 ,nil,0 + 0 );v13.Brightness=1 + 2 ;v13.ClockTime=1765 -(1414 + 337) ;v13.GeographicLatitude=1940 -(1642 + 298) ;v13.Ambient=Color3.fromRGB(391 -241 ,431 -281 ,150);v13.OutdoorAmbient=Color3.fromRGB(150,445 -295 ,150);v13.EnvironmentDiffuseScale=1;v13.EnvironmentSpecularScale=1;v13.GlobalShadows=true;v13.FogColor=Color3.fromRGB(66 + 134 ,156 + 44 ,220);v13.FogStart=972 -(357 + 615) ;v13.FogEnd=100000;end local function v40() local v122=0;local v123;while true do if (v122==0) then v123=0 + 0 ;while true do if (v123==1) then v13.OutdoorAmbient=Color3.fromRGB(30,30,147 -87 );v13.EnvironmentDiffuseScale=0.3 + 0 ;v13.EnvironmentSpecularScale=0.3;v13.GlobalShadows=true;v123=4 -2 ;end if (v123==0) then v37(v7("\53\228\129\89\249\14\50\2","\89\123\141\230\49\141\93"),nil,9 + 2 ,340 + 4660 );v13.Brightness=1 + 0 ;v13.ClockTime=0;v13.Ambient=Color3.fromRGB(1321 -(384 + 917) ,20,737 -(128 + 569) );v123=1;end if (v123==2) then v13.FogColor=Color3.fromRGB(15,1558 -(1407 + 136) ,1917 -(687 + 1200) );v13.FogStart=1810 -(556 + 1154) ;v13.FogEnd=17590 -12590 ;break;end end break;end end end local function v41(v124) if v35 then v35:Disconnect();v35=nil;end if  not v34 then v34={[v7("\208\125\249\15\27\126\250\124\243","\42\147\17\150\108\112")]=v13.ClockTime,[v7("\45\180\36\120\239\252\1\163\62\108","\136\111\198\77\31\135")]=v13.Brightness,[v7("\35\4\165\95\184\234\3","\201\98\105\199\54\221\132\119")]=v13.Ambient,[v7("\150\25\151\37\13\58\190\152\1\129\40\7\59\184","\204\217\108\227\65\98\85")]=v13.OutdoorAmbient,[v7("\120\204\242\198\35\204\81\209","\160\62\163\149\133\76")]=v13.FogColor,[v7("\240\175\10\28\215\215\178\25","\163\182\192\109\79")]=v13.FogStart,[v7("\18\41\7\229\251\48","\149\84\70\96\160")]=v13.FogEnd,[v7("\31\10\2\239\57\10\62\229\57\2\2\250\43","\141\88\102\109")]=v13.GlobalShadows,[v7("\150\93\220\121\8\50\91\204\182\93\222\84\19\59\83\212\160\86\249\115\27\49\80","\161\211\51\170\16\122\93\53")]=v13.EnvironmentDiffuseScale,[v7("\222\160\164\33\233\161\188\37\254\160\166\27\235\171\177\61\247\175\160\27\248\175\190\45","\72\155\206\210")]=v13.EnvironmentSpecularScale,[v7("\97\127\91\9\33\71\106\92\7\48\106\123\64\7\39\83\126\81","\83\38\26\52\110")]=v13.GeographicLatitude};end v24.timeMode=v124;if (v124==v7("\92\22\62","\38\56\119\71")) then v39();elseif (v124==v7("\253\230\95\222\49","\54\147\143\56\182\69")) then v40();elseif (v124==v7("\197\148\241\90\218\194","\191\182\225\159\41")) then v38();end v35=v10.Heartbeat:Connect(function() if (v24.timeMode==v7("\47\19\49","\162\75\114\72\53\235\231")) then v13.ClockTime=14;elseif (v24.timeMode==v7("\130\53\67\234\71","\98\236\92\36\130\51")) then v13.ClockTime=95 -(9 + 86) ;elseif (v24.timeMode==v7("\183\12\2\169\64\188","\80\196\121\108\218\37\200\213")) then v13.ClockTime=18.5;end end);end local function v42() local v126=0;while true do if (v126==1) then if v34 then local v472=421 -(275 + 146) ;local v473;while true do if (0==v472) then v473=0 + 0 ;while true do if ((64 -(29 + 35))==v473) then v13.ClockTime=v34.ClockTime;v13.Brightness=v34.Brightness;v13.Ambient=v34.Ambient;v473=1;end if (v473==(13 -10)) then v13.EnvironmentSpecularScale=v34.EnvironmentSpecularScale;v13.GeographicLatitude=v34.GeographicLatitude;break;end if (v473==(5 -3)) then v13.FogEnd=v34.FogEnd;v13.GlobalShadows=v34.GlobalShadows;v13.EnvironmentDiffuseScale=v34.EnvironmentDiffuseScale;v473=3;end if (v473==(4 -3)) then local v633=0 + 0 ;while true do if (v633==0) then v13.OutdoorAmbient=v34.OutdoorAmbient;v13.FogColor=v34.FogColor;v633=1013 -(53 + 959) ;end if (v633==(409 -(312 + 96))) then v13.FogStart=v34.FogStart;v473=2;break;end end end end break;end end end v24.timeMode=v7("\15\117\4","\234\96\19\98\31\43\110");break;end if (v126==0) then if v35 then local v474=0 -0 ;while true do if (v474==(285 -(147 + 138))) then v35:Disconnect();v35=nil;break;end end end v36();v126=900 -(813 + 86) ;end end end local v43=nil;local function v44() local v127=0 + 0 ;local v128;local v129;local v130;local v131;while true do if (v127==1) then v129=v128:FindFirstChild(v7("\46\10\95\198\162\125\130\2\45\93\200\184\66\138\20\11","\235\102\127\50\167\204\18"));if  not v129 then return;end v130=Instance.new(v7("\114\174\241\58\101\32\87\180\249\34\86\24\85\173\250\32\77\58\73","\78\48\193\149\67\36"));v127=3 -1 ;end if (v127==3) then v130.P=992 -(18 + 474) ;v130.Parent=v129;v131=v128:FindFirstChildOfClass(v7("\196\189\14\197\82\227\161\7","\60\140\200\99\164"));v127=4;end if (v127==(0 + 0)) then local v351=0 -0 ;while true do if (v351==(1086 -(860 + 226))) then if v43 then return;end v128=v15.Character;v351=1;end if (v351==(304 -(121 + 182))) then if  not v128 then return;end v127=1 + 0 ;break;end end end if (v127==(1242 -(988 + 252))) then local v352=0 + 0 ;while true do if (v352==1) then v130.AngularVelocity=Vector3.new(0,v24.spinSpeed,0 + 0 );v127=1973 -(49 + 1921) ;break;end if (v352==(890 -(223 + 667))) then v130.Name=v7("\3\14\137\22\99\17\40","\33\80\126\224\120");v130.MaxTorque=Vector3.new(0,100052 -(51 + 1) ,0 -0 );v352=1 -0 ;end end end if (v127==(1129 -(146 + 979))) then if v131 then v131.AutoRotate=false;end v43=v10.Heartbeat:Connect(function() local v437=0 + 0 ;local v438;local v439;local v440;while true do if (2==v437) then if  not v439 then return;end v440=v439:FindFirstChild(v7("\117\92\200\173\212\233\112","\168\38\44\161\195\150"));v437=608 -(311 + 294) ;end if (v437==3) then if v440 then v440.AngularVelocity=Vector3.new(0 -0 ,v24.spinSpeed,0 + 0 );end break;end if (v437==1) then if  not v438 then return;end v439=v438:FindFirstChild(v7("\175\225\9\39\172\136\253\0\20\173\136\224\52\39\176\147","\194\231\148\100\70"));v437=1445 -(496 + 947) ;end if (v437==(1358 -(1233 + 125))) then if  not v24.spinEnabled then return;end v438=v15.Character;v437=1;end end end);break;end end end local function v45() local v132=0 + 0 ;local v133;while true do if (v132==(1 + 0)) then if v133 then local v476=0 + 0 ;local v477;local v478;local v479;while true do if (v476==1) then v479=nil;while true do if (0==v477) then local v634=0;local v635;while true do if (v634==0) then v635=1645 -(963 + 682) ;while true do if ((0 + 0)==v635) then v478=v133:FindFirstChild(v7("\168\233\143\119\62\231\191\18\178\243\141\98\0\233\164\2","\118\224\156\226\22\80\136\214"));if v478 then local v749=1504 -(504 + 1000) ;local v750;while true do if ((0 + 0)==v749) then v750=v478:FindFirstChild(v7("\113\254\80\142\96\207\111","\224\34\142\57"));if v750 then v750:Destroy();end break;end end end v635=1 + 0 ;end if (v635==(1 + 0)) then v477=1 -0 ;break;end end break;end end end if (v477==1) then v479=v133:FindFirstChildOfClass(v7("\246\178\200\220\125\254\84\10","\110\190\199\165\189\19\145\61"));if v479 then v479.AutoRotate=true;end break;end end break;end if (v476==(0 + 0)) then v477=0 + 0 ;v478=nil;v476=1;end end end break;end if (v132==(182 -(156 + 26))) then if v43 then local v480=0 + 0 ;while true do if ((0 -0)==v480) then v43:Disconnect();v43=nil;break;end end end v133=v15.Character;v132=165 -(149 + 15) ;end end end local v46=nil;local function v47() if v46 then return;end local v134=v15.Character;if  not v134 then return;end local v135=v134:FindFirstChild(v7("\242\254\122\233\133\200\211\239\69\231\132\211\234\234\101\252","\167\186\139\23\136\235"));if  not v135 then return;end v135.CFrame=v135.CFrame + Vector3.new(960 -(890 + 70) ,5,117 -(39 + 78) ) ;local v137=Instance.new(v7("\56\186\140\20\44\176\132\2\25\188\156\20","\109\122\213\232"));v137.Name=v7("\200\251\187\18\216","\80\142\151\194");v137.MaxForce=Vector3.new(100482 -(14 + 468) ,219902 -119902 ,279503 -179503 );v137.Velocity=Vector3.new(0 + 0 ,0 + 0 ,0 + 0 );v137.P=565 + 685 ;v137.Parent=v135;local v143=Instance.new(v7("\33\201\115\85\36\223\101\67","\44\99\166\23"));v143.Name=v7("\90\251\48\20\20","\196\28\151\73\86\83");v143.MaxTorque=Vector3.new(100000,100000,26199 + 73801 );v143.P=5742 -2742 ;v143.D=50;v143.CFrame=v135.CFrame;v143.Parent=v135;for v270,v271 in ipairs(v134:GetDescendants()) do if v271:IsA(v7("\209\2\58\21\178\89\10\98","\22\147\99\73\112\226\56\120")) then v271.CanCollide=false;end end local v150=v134:FindFirstChildOfClass(v7("\144\96\239\244\131\183\124\230","\237\216\21\130\149"));if v150 then v150.PlatformStand=true;end v46=v10.RenderStepped:Connect(function() local v272=0 + 0 ;local v273;local v274;local v275;local v276;local v277;local v278;while true do if (v272==2) then local v441=0;while true do if (v441==1) then if  not v275 then return;end v272=10 -7 ;break;end if (v441==0) then if ( not v143 or  not v143.Parent) then return;end v275=v273:FindFirstChildOfClass(v7("\205\12\88\130\17\2\38\90","\62\133\121\53\227\127\109\79"));v441=1;end end end if (v272==(1 + 0)) then v274=v273:FindFirstChild(v7("\170\91\82\94\190\198\87\134\124\80\80\164\249\95\144\90","\62\226\46\63\63\208\169"));if  not v274 then return;end if ( not v137 or  not v137.Parent) then return;end v272=53 -(12 + 39) ;end if (v272==(5 + 0)) then v143.CFrame=v16.CFrame;break;end if (v272==(12 -8)) then v278=v16.CFrame.LookVector.Y;if ((math.abs(v276.Z)>0.3) and (math.abs(v278)>0.15)) then v277=v277 + Vector3.new(0 -0 ,v278 * v24.flySpeed ,0) ;end v137.Velocity=v277;v272=2 + 3 ;end if (v272==(2 + 1)) then v276=v275.MoveDirection;v277=Vector3.new(0,0 -0 ,0 + 0 );if (v276.Magnitude>(0.05 -0)) then local v541=Vector3.new(v276.X,1710 -(1596 + 114) ,v276.Z);if (v541.Magnitude>(0.01 -0)) then v277=v277 + (v541.Unit * v24.flySpeed) ;end end v272=717 -(164 + 549) ;end if (v272==(1438 -(1059 + 379))) then if  not v24.flyEnabled then return;end v273=v15.Character;if  not v273 then return;end v272=1 -0 ;end end end);end local function v48() local v151=0 + 0 ;local v152;while true do if ((0 + 0)==v151) then if v46 then local v481=392 -(145 + 247) ;local v482;while true do if (v481==0) then v482=0 + 0 ;while true do if (v482==(0 + 0)) then v46:Disconnect();v46=nil;break;end end break;end end end v152=v15.Character;v151=2 -1 ;end if (v151==1) then if v152 then local v483=v152:FindFirstChild(v7("\56\1\63\244\216\161\171\20\38\61\250\194\158\163\2\0","\194\112\116\82\149\182\206"));if v483 then local v569=0 + 0 ;local v570;local v571;local v572;while true do if (v569==(1 + 0)) then v572=nil;while true do if ((1 -0)==v570) then v572=v483:FindFirstChild(v7("\141\207\82\100\100","\45\203\163\43\38\35\42\91"));if v572 then v572:Destroy();end break;end if ((720 -(254 + 466))==v570) then v571=v483:FindFirstChild(v7("\31\164\85\58\246","\110\89\200\44\120\160\130"));if v571 then v571:Destroy();end v570=1;end end break;end if (v569==(560 -(544 + 16))) then v570=0 -0 ;v571=nil;v569=1;end end end local v484=v152:FindFirstChildOfClass(v7("\250\144\209\34\137\166\93\214","\52\178\229\188\67\231\201"));if v484 then v484.PlatformStand=false;end for v542,v543 in ipairs(v152:GetDescendants()) do if v543:IsA(v7("\3\64\67\1\199\93\49\53","\67\65\33\48\100\151\60")) then v543.CanCollide=true;end end end break;end end end local v49=false;local function v50(v153) local v154=v153:GetAttribute(v7("\246\244\158\212\242\198\226\188\252\225\208\233\171","\147\191\135\206\184"));if (v154==true) then return true;end if (v154==false) then return false;end local v155=v153:GetAttribute(v7("\171\63\168\196\202\102\161\129\58\143\197","\210\228\72\198\161\184\51"));if (v155 and (v155~=(628 -(294 + 334)))) then return true;end return false;end local function v51(v156) local v157=253 -(236 + 17) ;local v158;while true do local v279=0 + 0 ;while true do if ((0 + 0)==v279) then if ((3 -2)==v157) then if (v158 and v158:IsA(v7("\6\23\191\228\1\241\197\48","\183\68\118\204\129\81\144"))) then return v158;end for v574,v575 in ipairs(v156:GetDescendants()) do if v575:IsA(v7("\44\172\99\225\59\131\28\185","\226\110\205\16\132\107")) then return v575;end end v157=9 -7 ;end if (v157==2) then return nil;end v279=1 + 0 ;end if (v279==(1 + 0)) then if (v157==0) then if (v156.PrimaryPart and v156.PrimaryPart:IsA(v7("\20\72\224\21\67\207\36\93","\174\86\41\147\112\19"))) then return v156.PrimaryPart;end v158=v156:FindFirstChild(v7("\121\15\137\18","\203\59\96\237\107\69\111\113"));v157=795 -(413 + 381) ;end break;end end end end local function v52() local v159={};local v160=v12:FindFirstChild(v7("\207\209\239\215\68\248","\33\139\163\128\185")) and v12.Drones:FindFirstChild(v7("\100\72\5\201\89\93\0\250\69\87\10\219\68","\190\55\56\100")) ;if  not v160 then return v159;end for v280,v281 in ipairs(v160:GetChildren()) do if (v281:IsA(v7("\123\160\56\27\31","\147\54\207\92\126\115\131")) and (v281:GetAttribute(v7("\41\52\38\105\31\113\20\52\49","\30\109\81\85\29\109"))~=true) and (v281:GetAttribute(v7("\219\99\91\184\51\240\253\242\116","\156\159\17\52\214\86\190"))~=nil)) then local v356=0;local v357;while true do if (v356==(0 + 0)) then v357=v51(v281);if v357 then table.insert(v159,{[v7("\170\253\178\178\171","\220\206\143\221")]=v281,[v7("\148\114\34\3","\178\230\29\77\119\184\172")]=v357});end break;end end end end return v159;end local function v53(v161,v162) local v163=0 -0 ;local v164;while true do if (v163==(2 -1)) then return false;end if ((1970 -(582 + 1388))==v163) then v164=tick();while (tick() -v164)<v162  do local v448=0;while true do if (v448==(1 -0)) then if  not v24.killAll then return false;end task.wait(0.05);break;end if (v448==(0 + 0)) then if  not v161.Parent then return true;end if (v161:GetAttribute(v7("\209\187\25\15\101\247\236\187\14","\152\149\222\106\123\23"))==true) then return true;end v448=1;end end end v163=365 -(326 + 38) ;end end end local function v54() local v165=0 -0 ;local v166;while true do if (v165==(5 -1)) then v49=false;break;end if ((623 -(47 + 573))==v165) then v166=v15.Character;if v166 then local v485=v166:FindFirstChildOfClass(v7("\139\89\140\29\178\0\170\72","\111\195\44\225\124\220"));if v485 then v485.PlatformStand=false;end end v165=2 + 2 ;end if ((4 -3)==v165) then if v24.flyEnabled then local v486=0 -0 ;while true do if ((1664 -(1269 + 395))==v486) then v24.flyEnabled=false;v48();break;end end end if v24.spinEnabled then local v487=492 -(76 + 416) ;local v488;while true do if (v487==0) then v488=443 -(319 + 124) ;while true do if (v488==(0 -0)) then v24.spinEnabled=false;v45();break;end end break;end end end v165=1009 -(564 + 443) ;end if (v165==0) then if v49 then return;end v49=true;v165=2 -1 ;end if ((460 -(337 + 121))==v165) then task.wait(0.2 -0 );while v24.killAll do local v449=0 -0 ;local v450;while true do if ((1911 -(1261 + 650))==v449) then v450=v52();if ( #v450==(0 + 0)) then task.wait(0.5 -0 );else local v606=v450[1];local v607=v15.Character;if v607 then local v637=v607:FindFirstChild(v7("\245\51\251\66\187\210\47\242\113\186\210\50\198\66\167\201","\213\189\70\150\35"));if v637 then local v665=0;local v666;while true do if (v665==(1819 -(772 + 1045))) then v53(v606.drone,1.5 + 0 );task.wait(v24.killDelay);break;end if (v665==(144 -(102 + 42))) then local v728=0;local v729;while true do if (0==v728) then v729=1844 -(1524 + 320) ;while true do if (v729==(1270 -(1049 + 221))) then v666=v607:FindFirstChildOfClass(v7("\103\64\121\9\65\90\125\12","\104\47\53\20"));if v666 then v666.PlatformStand=true;end v729=157 -(18 + 138) ;end if (v729==(2 -1)) then v665=1;break;end end break;end end end if (v665==(1103 -(67 + 1035))) then v637.CFrame=CFrame.new(v606.root.Position);v637.AssemblyLinearVelocity=Vector3.new(0,0,0);v665=350 -(136 + 212) ;end end else task.wait(0.1 -0 );end else task.wait(0.1);end end break;end end end v165=3;end end end local v55={[v7("\232\106\33\74\142\153","\203\184\38\96\19\203")]=Color3.fromRGB(0 + 0 ,236 + 19 ,1704 -(240 + 1364) ),[v7("\27\92\77","\174\89\19\25\33")]=Color3.fromRGB(255,1142 -(1050 + 32) ,214 -154 )};local v56={[v7("\28\49\115\96\200\181\42\27\55","\107\79\114\50\46\151\231")]=0.2 + 0 ,[v7("\27\137\141\22\190\17\158\227\18","\160\89\198\213\73\234\89\215")]=1056 -(331 + 724) ,[v7("\106\94\140\193\245\105\85\144\215\235\111","\165\40\17\212\158")]=35,[v7("\214\237\58\22\7\200\230\58\18\2\204\236\59","\70\133\185\104\83")]=1 + 3 };local v57={};local v58={};local v59={};local v60={};local function v61(v167,v168) local v169=0;local v170;while true do if (v169==(647 -(269 + 375))) then v170.OutlineTransparency=725 -(267 + 458) ;v170.DepthMode=Enum.HighlightDepthMode.AlwaysOnTop;v169=2 + 2 ;end if (v169==1) then v170.Name=v7("\50\136\173\85\12\147\167\72\40\171","\48\96\231\194");v170.Adornee=v167;v169=3 -1 ;end if (v169==2) then v170.FillTransparency=819 -(667 + 151) ;v170.OutlineColor=(v168 and v55.PLAYER) or v55.BOT ;v169=3;end if (v169==(1501 -(1410 + 87))) then v170.Parent=v14;v59[v167]=v170;break;end if (v169==(1897 -(1504 + 393))) then if v59[v167] then return;end v170=Instance.new(v7("\44\76\67\34\197\13\66\76\62","\169\100\37\36\74"));v169=2 -1 ;end end end local function v62(v171,v172) local v173=0 -0 ;local v174;while true do if (v173==(799 -(461 + 335))) then v60[v171]=v174;break;end if (v173==(1 + 0)) then v174.Thickness=1762 -(1730 + 31) ;v174.Color=(v172 and v55.PLAYER) or v55.BOT ;v173=1669 -(728 + 939) ;end if (v173==(6 -4)) then v174.Transparency=0.8 -0 ;v174.Visible=false;v173=6 -3 ;end if (v173==0) then if v60[v171] then return;end v174=Drawing.new(v7("\228\83\0\40","\227\168\58\110\77\121\184\207"));v173=1069 -(138 + 930) ;end end end local function v63(v175,v176) local v177=0 + 0 ;local v178;local v179;local v180;local v181;local v182;local v183;local v184;local v185;while true do if (v177==(1 + 0)) then v182=Drawing.new(v7("\24\185\45\227","\134\84\208\67"));for v451,v452 in ipairs({v179,v180,v181,v182}) do local v453=1870 -(474 + 1396) ;while true do if (v453==(0 -0)) then v452.Thickness=v56.BOX_THICK;v452.Color=v178;v453=1 + 0 ;end if (v453==(1 + 0)) then v452.Transparency=1;v452.Visible=false;break;end end end v183=Drawing.new(v7("\39\169\158\72","\60\115\204\230"));v183.Size=v24.nameFontSize;v183.Center=true;v177=5 -3 ;end if (v177==(1 + 5)) then v185.Color=Color3.fromRGB(784 -549 ,1024 -789 ,826 -(562 + 29) );v185.Font=3 + 0 ;v185.Text=v7("\137\98","\111\164\79\65\68");v185.Visible=false;v58[v175]={[v7("\202\208\141\219\26","\138\166\185\227\190\78")]=v179,[v7("\199\125\203\50\112","\121\171\20\165\87\50\67")]=v180,[v7("\202\49\183\51\149","\98\166\88\217\86\217")]=v181,[v7("\250\255\119\4\180","\188\150\150\25\97\230")]=v182,[v7("\212\136\82\7\56\232\194\157","\141\186\233\63\98\108")]=v183,[v7("\229\243\60\179\17\244\242\56","\69\145\138\76\214")]=v184,[v7("\116\198\154\157\139\19\104\219","\118\16\175\233\233\223")]=v185};break;end if (v177==(1423 -(374 + 1045))) then v184.OutlineColor=Color3.new(0 + 0 ,0,0 -0 );v184.Color=v178;v184.Font=640 -(448 + 190) ;v184.Text=v26(v175);v184.Visible=false;v177=2 + 3 ;end if (v177==(1 + 1)) then local v386=0 + 0 ;while true do if (v386==1) then v183.Color=v178;v183.Font=2;v386=7 -5 ;end if (v386==(5 -3)) then v183.Text=v25(v175);v177=1497 -(1307 + 187) ;break;end if (v386==(0 -0)) then v183.Outline=true;v183.OutlineColor=Color3.new(0 -0 ,0 -0 ,0);v386=684 -(232 + 451) ;end end end if (v177==(0 + 0)) then if v58[v175] then return;end v178=(v176 and v55.PLAYER) or v55.BOT ;v179=Drawing.new(v7("\87\53\177\69","\197\27\92\223\32\209\187\17"));v180=Drawing.new(v7("\47\86\205\254","\155\99\63\163"));v181=Drawing.new(v7("\174\216\175\136","\228\226\177\193\237\217"));v177=1;end if (v177==3) then v183.Visible=false;v184=Drawing.new(v7("\211\63\243\100","\16\135\90\139"));v184.Size=11 + 1 ;v184.Center=true;v184.Outline=true;v177=4;end if (v177==(569 -(510 + 54))) then v185=Drawing.new(v7("\96\113\30\39","\24\52\20\102\83\46\52"));v185.Size=11;v185.Center=true;v185.Outline=true;v185.OutlineColor=Color3.new(0 -0 ,36 -(13 + 23) ,0 -0 );v177=6;end end end local function v64(v186) local v187=v58[v186];if v187 then local v298=0 -0 ;while true do if (v298==0) then v187.lineT.Visible=false;v187.lineB.Visible=false;v298=1 -0 ;end if (v298==(1090 -(830 + 258))) then v187.nameText.Visible=false;v187.typeText.Visible=false;v298=10 -7 ;end if ((1 + 0)==v298) then v187.lineL.Visible=false;v187.lineR.Visible=false;v298=2 + 0 ;end if (v298==3) then v187.distText.Visible=false;break;end end end local v188=v60[v186];if v188 then v188.Visible=false;end local v189=v59[v186];if v189 then v189.Enabled=false;end end local function v65(v190) local v191=v58[v190];if v191 then local v301=1441 -(860 + 581) ;while true do if (v301==(0 -0)) then for v549,v550 in ipairs({v7("\135\141\59\190\218","\29\235\228\85\219\142\235"),v7("\49\221\180\216\85","\50\93\180\218\189\23\46\71"),v7("\210\173\85\73\104","\40\190\196\59\44\36\188"),v7("\48\76\210\177\200","\109\92\37\188\212\154\29"),v7("\10\238\169\198\5\95\28\251","\58\100\143\196\163\81"),v7("\14\91\51\166\11\76\253\26","\110\122\34\67\195\95\41\133"),v7("\113\184\72\94\226\112\169\79","\182\21\209\59\42")}) do if v191[v550] then v191[v550]:Remove();end end v58[v190]=nil;break;end end end local v192=v60[v190];if v192 then local v302=0 -0 ;while true do if (v302==(0 + 0)) then v192:Remove();v60[v190]=nil;break;end end end local v193=v59[v190];if v193 then local v303=0 + 0 ;local v304;while true do if (v303==(0 -0)) then v304=0 + 0 ;while true do if (v304==(0 + 0)) then v193:Destroy();v59[v190]=nil;break;end end break;end end end end task.spawn(function() while task.wait(v56.SCAN_RATE) do local v282=1426 -(85 + 1341) ;local v283;local v284;local v285;while true do if ((6 -2)==v282) then for v498,v499 in pairs(v58) do if ( not v285[v498] or  not v498.Parent or (v498:GetAttribute(v7("\45\168\46\103\27\162\36\118\13","\19\105\205\93"))==true)) then v65(v498);end end break;end if (v282==2) then v285={};for v500,v501 in ipairs(v283) do v285[v501.drone]=true;if v24.highlight then v61(v501.drone,v501.isPlayer);end if v24.tracers then v62(v501.drone,v501.isPlayer);end end v282=3;end if (v282==(0 -0)) then local v454=0;while true do if (v454==(372 -(45 + 327))) then v283={};v284=v12:FindFirstChild(v7("\147\69\202\19\36\173","\222\215\55\165\125\65")) and v12.Drones:FindFirstChild(v7("\31\193\199\13\252\196\233\110\62\222\200\31\225","\42\76\177\166\122\146\161\141")) ;v454=1 -0 ;end if (v454==(503 -(444 + 58))) then v282=1 + 0 ;break;end end end if ((1 + 0)==v282) then if v284 then for v582,v583 in ipairs(v284:GetChildren()) do if (v583:IsA(v7("\136\133\1\203\117","\22\197\234\101\174\25")) and (v583:GetAttribute(v7("\9\49\182\200\100\160\206\131\41","\230\77\84\197\188\22\207\183"))~=true) and (v583:GetAttribute(v7("\221\6\201\242\137\143\241\56\252","\85\153\116\166\156\236\193\144"))~=nil)) then local v608=0;local v609;while true do if (v608==(0 + 0)) then v609=v51(v583);if v609 then table.insert(v283,{[v7("\160\242\66\189\225","\96\196\128\45\211\132")]=v583,[v7("\39\130\116\75","\184\85\237\27\63\178\207\212")]=v609,[v7("\1\74\57\83\9\64\12\77","\63\104\57\105")]=v50(v583)});end break;end end end end end v57=v283;v282=5 -3 ;end if (3==v282) then for v503,v504 in pairs(v59) do if ( not v285[v503] or  not v503.Parent or (v503:GetAttribute(v7("\47\130\183\80\25\136\189\65\15","\36\107\231\196"))==true)) then v65(v503);end end for v505,v506 in pairs(v60) do if ( not v285[v505] or  not v505.Parent or (v505:GetAttribute(v7("\121\176\177\147\79\186\187\130\89","\231\61\213\194"))==true)) then v65(v505);end end v282=4;end end end end);v10.RenderStepped:Connect(function() local v194;if v15.Character then local v305=1732 -(64 + 1668) ;local v306;while true do if (v305==(1973 -(1227 + 746))) then v306=v15.Character:FindFirstChild(v7("\129\29\211\128\49\166\1\218\179\48\166\28\238\128\45\189","\95\201\104\190\225"));if v306 then v194=v306.Position;end break;end end end if  not v194 then v194=v16.CFrame.Position;end local v195=v16.ViewportSize;local v196=v195.X/(5 -3) ;local v197=v195.Y;for v286,v287 in ipairs(v57) do local v288=0;local v289;local v290;while true do if ((1 -0)==v288) then if ( not v289.Parent or (v289:GetAttribute(v7("\139\206\210\218\189\196\216\203\171","\174\207\171\161"))==true)) then v64(v289);else local v551=(v290 and v24.espPlayer) or ( not v290 and v24.espBot) ;if (v17 and v551) then local v590=494 -(415 + 79) ;local v591;local v592;local v593;while true do if (v590==(1 + 1)) then if (v593.Z>0) then local v667=v56.BOX_PADDING * ((591 -(142 + 349))/v593.Z) ;local v668=math.clamp(v667,3 + 2 ,274 -74 );local v669=math.clamp(v667,3 + 2 ,141 + 59 );local v670,v671=v593.X-v668 ,v593.Y-v669 ;local v672,v673=v593.X + v668 ,v593.Y + v669 ;v591.lineT.From=Vector2.new(v670,v671);v591.lineT.To=Vector2.new(v672,v671);v591.lineT.Visible=true;v591.lineB.From=Vector2.new(v670,v673);v591.lineB.To=Vector2.new(v672,v673);v591.lineB.Visible=true;v591.lineL.From=Vector2.new(v670,v671);v591.lineL.To=Vector2.new(v670,v673);v591.lineL.Visible=true;v591.lineR.From=Vector2.new(v672,v671);v591.lineR.To=Vector2.new(v672,v673);v591.lineR.Visible=true;local v686=(v670 + v672)/2 ;local v687=40 -25 ;local v688=v671-(1884 -(1710 + 154)) ;if v24.showDroneName then v591.nameText.Text=v25(v289);v591.nameText.Color=v27(v289);v591.nameText.Position=Vector2.new(v686,v688);v591.nameText.Visible=true;v688=v688-v687 ;else v591.nameText.Visible=false;end if v24.showDroneType then local v713=318 -(200 + 118) ;while true do if (1==v713) then v591.typeText.Position=Vector2.new(v686,v688);v591.typeText.Visible=true;v713=2;end if ((0 + 0)==v713) then v591.typeText.Text=v26(v289);v591.typeText.Color=v27(v289);v713=1;end if (v713==2) then v688=v688-v687 ;break;end end else v591.typeText.Visible=false;end if v24.showDroneDist then local v715=0;local v716;while true do if (v715==(0 -0)) then v716=math.floor((v592.Position-v194).Magnitude);v591.distText.Text=v716   .. "m" ;v715=1 -0 ;end if (v715==1) then v591.distText.Position=Vector2.new(v686,v688);v591.distText.Visible=true;break;end end else v591.distText.Visible=false;end else v64(v289);end break;end if (v590==1) then local v638=0 + 0 ;local v639;while true do if (v638==(0 + 0)) then v639=0 + 0 ;while true do if (0==v639) then v592=v287.root;v593=v16:WorldToViewportPoint(v592.Position);v639=1;end if (v639==(1 + 0)) then v590=2;break;end end break;end end end if (v590==(0 -0)) then v63(v289,v290);v591=v58[v289];v590=1251 -(363 + 887) ;end end else local v594=0 -0 ;local v595;while true do if (v594==(0 -0)) then v595=v58[v289];if v595 then v595.lineT.Visible=false;v595.lineB.Visible=false;v595.lineL.Visible=false;v595.lineR.Visible=false;v595.nameText.Visible=false;v595.typeText.Visible=false;v595.distText.Visible=false;end break;end end end if (v24.tracers and v17) then local v596=0;local v597;while true do if (v596==(0 + 0)) then v597=v60[v289];if v597 then local v696=0;local v697;while true do if ((0 -0)==v696) then v697=v16:WorldToViewportPoint(v287.root.Position);if (v697.Z>(0 + 0)) then local v745=0;local v746;while true do if (v745==(1664 -(674 + 990))) then v746=0 + 0 ;while true do if (v746==1) then v597.Visible=true;break;end if (v746==(0 + 0)) then v597.From=Vector2.new(v196,v197);v597.To=Vector2.new(v697.X,v697.Y);v746=1 -0 ;end end break;end end else v597.Visible=false;end break;end end end break;end end else local v598=1055 -(507 + 548) ;local v599;while true do if (v598==(837 -(289 + 548))) then v599=v60[v289];if v599 then v599.Visible=false;end break;end end end end break;end if (v288==(1818 -(821 + 997))) then local v455=0;while true do if (v455==(255 -(195 + 60))) then v289=v287.drone;v290=v287.isPlayer;v455=1;end if (v455==1) then v288=1 + 0 ;break;end end end end end end);task.spawn(function() while task.wait(1) do local v291=0;local v292;while true do if (0==v291) then v292=v15.Character;if v292 then local v552=1501 -(251 + 1250) ;local v553;while true do if (v552==0) then v553=v292:FindFirstChild(v7("\197\235\0\242\246\216\228\250\63\252\247\195\221\255\31\231","\183\141\158\109\147\152"));if v553 then pcall(function() v12:RequestStreamAroundAsync(v553.Position,v56.STREAM_RADIUS);end);end break;end end end break;end end end end);local v66=v23.Visuals:AddLeftGroupbox(v7("\9\58\214","\108\76\105\134"));v66:AddToggle(v7("\238\214\161\209\194\234\220\180\243","\174\139\165\209\129"),{[v7("\151\182\250\213","\24\195\211\130\161\166\99\16")]=v7("\99\48\217\108\99\26\71\26\236\62","\118\38\99\137\76\51"),[v7("\217\35\3\19\28\44\233","\64\157\70\101\114\105")]=true,[v7("\99\169\171\239\18\65\171\172","\112\32\200\199\131")]=function(v198) v24.espPlayer=v198;end});v66:AddToggle(v7("\41\67\76\154\204\191","\66\76\48\60\216\163\203"),{[v7("\142\131\97\231","\68\218\230\25\147\63\174")]=v7("\136\25\99\12\148\162\62","\214\205\74\51\44"),[v7("\222\73\228\253\98\246\88","\23\154\44\130\156")]=true,[v7("\50\167\161\162\52\18\18\173","\115\113\198\205\206\86")]=function(v200) v24.espBot=v200;end});v66:AddToggle(v7("\129\68\238\126\129\81\251\84\128\82\236","\58\228\55\158"),{[v7("\128\140\200\58","\85\212\233\176\78\92\205")]=v7("\111\107\184\162\110\93\142\231\68\92\141\240\89","\130\42\56\232"),[v7("\206\176\34\226\85\51\254","\95\138\213\68\131\32")]=false,[v7("\30\39\174\79\98\35\56","\22\74\72\193\35")]="Синяя обводка на защитниках",[v7("\15\120\232\84\46\120\231\83","\56\76\25\132")]=function(v202) v24.espDefender=v202;end});v66:AddToggle(v7("\86\200\172\46\195\87\198\163\50","\175\62\161\203\70"),{[v7("\8\216\219\7","\85\92\189\163\115")]=v7("\1\165\55\48\37\165\55\48\61","\88\73\204\80"),[v7("\10\134\22\71\60\214\58","\186\78\227\112\38\73")]=false,[v7("\223\86\241\89\81\123\255\92","\26\156\55\157\53\51")]=function(v204) local v205=0 -0 ;while true do if ((0 + 0)==v205) then v24.highlight=v204;if v204 then for v554,v555 in ipairs(v57) do v61(v555.drone,v555.isPlayer);end else local v507=1032 -(809 + 223) ;local v508;while true do if (v507==(0 -0)) then v508=0 -0 ;while true do if (v508==(0 -0)) then for v647,v648 in pairs(v59) do v648:Destroy();end v59={};break;end end break;end end end break;end end end});v66:AddToggle(v7("\152\202\23\218\189\66\159","\48\236\184\118\185\216"),{[v7("\209\184\79\36","\84\133\221\55\80\175")]=v7("\137\245\37\165\194\78\174","\60\221\135\68\198\167"),[v7("\202\184\254\130\87\213\250","\185\142\221\152\227\34")]=false,[v7("\123\196\91\246\65\50\244\83","\151\56\165\55\154\35\83")]=function(v206) local v207=0;while true do if (v207==(0 + 0)) then v24.tracers=v206;if v206 then for v556,v557 in ipairs(v57) do v62(v557.drone,v557.isPlayer);end else for v558,v559 in pairs(v60) do v559:Remove();end v60={};end break;end end end});local v67=v23.Visuals:AddRightGroupbox(v7("\131\66\8\235\178\66","\142\192\35\101"));v67:AddToggle(v7("\208\96\37\175\229\158\165\17\222\97","\118\182\21\73\195\135\236\204"),{[v7("\60\57\2\84","\157\104\92\122\32\100\109")]=v7("\133\179\195\198\63\53\132\172\171\178","\203\195\198\175\170\93\71\237"),[v7("\10\78\56\212\68\29\232","\156\78\43\94\181\49\113")]=false,[v7("\81\233\200\175\9\66\122\121","\25\18\136\164\195\107\35")]=function(v208) local v209=0 + 0 ;while true do if (v209==(617 -(14 + 603))) then v24.fullbright=v208;if v208 then v30();else v31();end break;end end end});v67:AddSlider(v7("\238\34\191","\216\136\77\201\47\18\220\161"),{[v7("\25\233\51\206","\226\77\140\75\186\104\188")]=v7("\154\207\221\58\93\184\142\246\16\121","\47\217\174\176\95"),[v7("\156\216\112\3\167\88\108","\70\216\189\22\98\210\52\24")]=199 -(118 + 11) ,[v7("\247\214\173","\179\186\191\195\231")]=70,[v7("\212\62\0","\132\153\95\120")]=20 + 100 ,[v7("\131\189\27\35\243\211\174\182","\192\209\210\110\77\151\186")]=1,[v7("\195\2\46\229\253\197\227\8","\164\128\99\66\137\159")]=function(v210) v16.FieldOfView=v210;v24.fov=v210;end});local v68=v23.Visuals:AddLeftGroupbox(v7("\52\128\228\187\64\134\239\254\36\136\240","\222\96\233\137"));v68:AddButton({[v7("\141\182\191\11","\144\217\211\199\127\232\147")]="☀️ День",[v7("\222\58\48\43","\36\152\79\94\72\181\37\98")]=function() v41(v7("\211\217\94","\95\183\184\39"));v19:Notify({[v7("\129\54\243\42\81","\98\213\95\135\70\52\224")]=v7("\202\170\196\114","\52\158\195\169\23"),[v7("\89\179\60\96\131\59\111","\235\26\220\82\20\230\85\27")]="День ☀️",[v7("\172\180\251\195\96\129\174\231","\20\232\193\137\162")]=3});end});v68:AddButton({[v7("\22\218\221\178","\17\66\191\165\198\135\236\119")]="🌙 Ночь",[v7("\41\186\160\16","\177\111\207\206\115\159\136\140")]=function() v41(v7("\11\128\23\28\192","\63\101\233\112\116\180\47"));v19:Notify({[v7("\247\50\249\30\253","\86\163\91\141\114\152")]=v7("\103\2\121\118","\90\51\107\20\19"),[v7("\174\255\139\251\56\131\228","\93\237\144\229\143")]="Ночь 🌙",[v7("\49\227\226\24\31\79\26\248","\38\117\150\144\121\107")]=3 + 0 });end});v68:AddButton({[v7("\25\190\246\46","\90\77\219\142")]="🌅 Закат",[v7("\192\17\47\58","\26\134\100\65\89\44\103")]=function() local v213=0 -0 ;while true do if (v213==(949 -(551 + 398))) then v41(v7("\226\246\62\48\161\229","\196\145\131\80\67"));v19:Notify({[v7("\42\185\18\4\29","\136\126\208\102\104\120")]=v7("\76\131\195\70","\49\24\234\174\35\207\50\93"),[v7("\47\253\243\156\116\2\230","\17\108\146\157\232")]="Закат 🌅",[v7("\111\214\6\236\59\161\68\205","\200\43\163\116\141\79")]=3});break;end end end});v68:AddButton({[v7("\139\51\37\151","\131\223\86\93\227\208\148")]="❌ Выключить",[v7("\197\80\184\181","\213\131\37\214\214\125")]=function() local v214=0 + 0 ;while true do if (v214==(0 + 0)) then v42();v19:Notify({[v7("\18\34\49\179\228","\129\70\75\69\223")]=v7("\114\194\254\236","\143\38\171\147\137\28"),[v7("\243\141\183\231\6\237\192","\180\176\226\217\147\99\131")]="Время восстановлено",[v7("\247\172\61\6\199\176\32\9","\103\179\217\79")]=3});break;end end end});local v69=v23.Visuals:AddRightGroupbox(v7("\107\163\17\218\82\156\171\79\165\25","\195\42\215\124\181\33\236"));v69:AddToggle(v7("\11\86\48","\152\109\57\87\94\69"),{[v7("\205\210\18\183","\200\153\183\106\195\222\178\52")]=v7("\20\236\143","\58\82\131\232\93\41"),[v7("\167\82\214\20\72\51\151","\95\227\55\176\117\61")]=false,[v7("\59\127\47\71\169\25\125\40","\203\120\30\67\43")]=function(v215) local v216=0 + 0 ;while true do if (v216==(0 -0)) then v24.fogEnabled=v215;if v215 then v32();else v33();end break;end end end});v69:AddToggle(v7("\226\53\68\225","\185\145\69\45\143"),{[v7("\190\26\1\178","\188\234\127\121\198")]=v7("\11\34\26\141","\227\88\82\115"),[v7("\103\26\188\166\23\127\87","\19\35\127\218\199\98")]=false,[v7("\63\250\6\238\30\250\9\233","\130\124\155\106")]=function(v217) local v218=0;local v219;while true do if (v218==(0 -0)) then v219=0 + 0 ;while true do if (v219==(0 -0)) then v24.spinEnabled=v217;if v217 then v44();else v45();end break;end end break;end end end});v69:AddSlider(v7("\198\219\255\161\144\230\121\186\209","\223\181\171\150\207\195\150\28"),{[v7("\120\63\251\186","\105\44\90\131\206")]=v7("\204\240\187\183\72\13\239\229\183\189","\94\159\128\210\217\104"),[v7("\116\252\0\190\74\115\237","\26\48\153\102\223\63\31\153")]=15,[v7("\47\73\227","\147\98\32\141")]=5,[v7("\53\66\251","\43\120\35\131\170\102\54")]=12 + 28 ,[v7("\102\9\146\184\161\185\138\83","\228\52\102\231\214\197\208")]=1,[v7("\61\225\121\198\232\138\26\221","\182\126\128\21\170\138\235\121")]=function(v220) v24.spinSpeed=v220;end});local v70=v23.Names:AddLeftGroupbox(v7("\175\200\58\232\131\83\30\7\134\223\38","\102\235\186\85\134\230\115\80"));v70:AddToggle(v7("\68\4\49\72\86\198\45\89\9\16\94\127\209","\66\55\108\94\63\18\180"),{[v7("\32\136\157\35","\57\116\237\229\87\71")]=v7("\153\185\226\240\55\202\85\165\191\232\167\89\239\74\175","\39\202\209\141\135\23\142"),[v7("\219\54\15\11\39\244\235","\152\159\83\105\106\82")]=true,[v7("\162\199\93\254\203\93\130\205","\60\225\166\49\146\169")]=function(v222) v24.showDroneName=v222;end});v70:AddToggle(v7("\60\22\32\61\37\21\32\16\42\30\24\23\42","\103\79\126\79\74\97"),{[v7("\142\122\203\103","\122\218\31\179\19\62")]=v7("\128\222\194\214\137\133\87\188\216\200\129\253\184\85\182","\37\211\182\173\161\169\193"),[v7("\211\63\75\216\61\119\173","\217\151\90\45\185\72\27")]=true,[v7("\224\125\235\30\84\194\127\236","\54\163\28\135\114")]=function(v224) v24.showDroneType=v224;end});v70:AddToggle(v7("\59\211\82\149\106\109\39\213\88\166\71\108\60","\31\72\187\61\226\46"),{[v7("\247\3\91\198","\68\163\102\35\178\39\30")]=v7("\141\120\213\208\67\145\138\2\170\113\212\196\6","\113\222\16\186\167\99\213\227"),[v7("\10\11\253\247\59\2\239","\150\78\110\155")]=true,[v7("\166\196\43\237\166\31\188\75","\32\229\165\71\129\196\126\223")]=function(v226) v24.showDroneDist=v226;end});local v71=v23.Names:AddRightGroupbox(v7("\240\157\221\141\132","\181\163\233\164\225\225"));v71:AddSlider(v7("\94\138\51\114\118\132\48\99\99\130\36\114","\23\48\235\94"),{[v7("\72\223\192\73","\178\28\186\184\61\55\83")]=v7("\226\194\73\40\178\61\252\222\200","\149\164\173\39\92\146\110"),[v7("\215\34\22\30\15\23\231","\123\147\71\112\127\122")]=103 -(40 + 49) ,[v7("\225\196\140","\38\172\173\226\17")]=30 -22 ,[v7("\96\16\52","\143\45\113\76")]=24,[v7("\138\183\9\50\188\177\18\59","\92\216\216\124")]=1,[v7("\120\51\160\76\255\90\49\167","\157\59\82\204\32")]=function(v228) v24.nameFontSize=v228;end});v71:AddDropdown(v7("\54\63\238\255\202\229\223\190\42\19\236\254\236","\209\88\94\131\154\137\138\179"),{[v7("\28\164\220\104","\66\72\193\164\28\126\67\81")]=v7("\196\35\164\87\52\54\202\35\172\93","\22\135\76\200\56\70"),[v7("\187\49\244\49\88\242","\129\237\80\152\68\61")]={v7("\69\173\5\254","\56\49\200\100\147\124\119"),v7("\219\54\182\228\201","\144\172\94\223"),v7("\39\22\163\73","\39\68\111\194")},[v7("\242\163\225\198\108\187\194","\215\182\198\135\167\25")]=v7("\153\76\235\69","\40\237\41\138"),[v7("\228\117\246\244\72\198\119\241","\42\167\20\154\152")]=function(v230) v24.nameColorMode=v230;end});local v72=v23.Aim:AddLeftGroupbox(v7("\105\241\175\64\112\53","\65\42\158\194\34\17"));v72:AddToggle(v7("\17\46\94\0\12\225\23","\142\122\71\50\108\77\141\123"),{[v7("\33\167\231\12","\91\117\194\159\120")]=v7("\49\20\50\20\117\208\40\22","\68\122\125\94\120\85\145"),[v7("\51\25\201\95\221\213\174","\218\119\124\175\62\168\185")]=false,[v7("\134\241\68\200\167\241\75\207","\164\197\144\40")]=function(v232) local v233=0 -0 ;while true do if (v233==0) then v24.killAll=v232;if v232 then task.spawn(v54);end break;end end end});v72:AddSlider(v7("\136\249\166\135\249\179\143\241\179","\214\227\144\202\235\189"),{[v7("\217\160\159\111","\92\141\197\231\27\112\211\51")]=v7("\205\246\134\175\145\194\250\134\162\200","\177\134\159\234\195"),[v7("\153\238\57\161\220\177\255","\169\221\139\95\192")]=25,[v7("\243\130\113","\70\190\235\31\95\66")]=10,[v7("\151\227\2","\133\218\130\122\134")]=247 -147 ,[v7("\14\240\246\202\216\170\54\59","\88\92\159\131\164\188\195")]=1 + 0 ,[v7("\163\47\179\71\213\234\222\139","\189\224\78\223\43\183\139")]=function(v234) v24.killDelay=v234/(263 -163) ;end});local v73=v23.Misc:AddLeftGroupbox(v7("\3\243\156\19\204\43\242\158","\161\78\156\234\118"));v73:AddToggle(v7("\161\187\208","\188\199\215\169"),{[v7("\200\12\71\111","\136\156\105\63\27")]=v7("\61\128\96","\84\123\236\25"),[v7("\212\142\172\22\185\185\228","\213\144\235\202\119\204")]=false,[v7("\0\25\210\38\42\34\78\40","\45\67\120\190\74\72\67")]=function(v236) v24.flyEnabled=v236;if v236 then v47();else v48();end end});v73:AddSlider(v7("\38\46\244\150\233\141\235\237","\137\64\66\141\197\153\232\142"),{[v7("\55\213\58\178","\232\99\176\66\198")]=v7("\202\45\49\70\72\157\252\41\232","\76\140\65\72\102\27\237\153"),[v7("\110\223\16\211\194\13\170","\222\42\186\118\178\183\97")]=60,[v7("\112\229\74","\234\61\140\36")]=1624 -(1032 + 572) ,[v7("\12\220\162","\111\65\189\218\18")]=617 -(203 + 214) ,[v7("\113\68\14\59\15\85\161\68","\207\35\43\123\85\107\60")]=1818 -(568 + 1249) ,[v7("\83\171\172\230\123\113\169\171","\25\16\202\192\138")]=function(v238) v24.flySpeed=v238;end});local v74=Color3.fromRGB(50,118 + 32 ,255);local v75={};local v76={};local v77={};local v78={};local v79={};local v80={};local function v81(v240) local v241=0 -0 ;local v242;while true do if (v241==0) then v242=0;while true do if (v242==(0 -0)) then if (v240==v15) then return false;end if  not v240.Team then return false;end v242=1;end if (v242==(1307 -(913 + 393))) then return v240.Team.Name==v7("\217\206\171\231\167\240\248\217\190","\148\157\171\205\130\201") ;end end break;end end end local function v82(v243) local v244=0 -0 ;local v245;while true do if (v244==(3 -0)) then v245.Parent=v14;v75[v243]=v245;break;end if (v244==(410 -(269 + 141))) then if  not v243.Character then return;end if v75[v243] then local v509=0;while true do if ((0 -0)==v509) then local v600=1981 -(362 + 1619) ;while true do if ((1625 -(950 + 675))==v600) then v75[v243].Adornee=v243.Character;return;end end end end end v245=Instance.new(v7("\11\221\115\33\221\255\36\220\96","\150\67\180\20\73\177"));v244=1 + 0 ;end if (v244==1) then v245.Name=v7("\169\29\28\72\131\28\31\95\165\52","\45\237\120\122");v245.Adornee=v243.Character;v245.FillTransparency=1180 -(216 + 963) ;v244=2;end if (v244==(1289 -(485 + 802))) then v245.OutlineColor=v74;v245.OutlineTransparency=559 -(432 + 127) ;v245.DepthMode=Enum.HighlightDepthMode.AlwaysOnTop;v244=1076 -(1065 + 8) ;end end end local function v83(v246) if v76[v246] then return;end local v247=Drawing.new(v7("\251\225\172\41","\76\183\136\194"));local v248=Drawing.new(v7("\86\239\235\61","\116\26\134\133\88\48\47"));local v249=Drawing.new(v7("\50\200\174\225","\18\126\161\192\132\221"));local v250=Drawing.new(v7("\115\33\160\1","\54\63\72\206\100"));for v293,v294 in ipairs({v247,v248,v249,v250}) do local v295=0;while true do if (0==v295) then v294.Thickness=1602.5 -(635 + 966) ;v294.Color=v74;v295=1;end if ((1 + 0)==v295) then v294.Transparency=0.9;v294.Visible=false;break;end end end v76[v246]={T=v247,B=v248,L=v249,R=v250};end local function v84(v252) local v253=42 -(5 + 37) ;local v254;while true do if (v253==1) then v254.Thickness=2.5 -1 ;v254.Color=v74;v253=1 + 1 ;end if (v253==(0 -0)) then if v77[v252] then return;end v254=Drawing.new(v7("\228\80\75\127","\27\168\57\37\26\133"));v253=1 + 0 ;end if (v253==(3 -1)) then v254.Transparency=0.7;v254.Visible=false;v253=3;end if ((11 -8)==v253) then v77[v252]=v254;break;end end end local function v85(v255) local v256=0 -0 ;local v257;while true do if (v256==0) then local v415=0 -0 ;while true do if (v415==(0 + 0)) then if v78[v255] then return;end v257=Drawing.new(v7("\25\175\100\188","\183\77\202\28\200"));v415=530 -(318 + 211) ;end if (v415==(4 -3)) then v257.Size=14;v256=1588 -(963 + 624) ;break;end end end if (v256==(1 + 1)) then v257.Color=Color3.fromRGB(1046 -(518 + 328) ,512 -292 ,255);v257.Font=2 -0 ;v257.Text=v255.Name;v256=320 -(301 + 16) ;end if (3==v256) then v257.Visible=false;v78[v255]=v257;break;end if (v256==(2 -1)) then v257.Center=true;v257.Outline=true;v257.OutlineColor=Color3.new(0 -0 ,0 -0 ,0 + 0 );v256=2;end end end local function v86(v258) local v259=0 + 0 ;local v260;while true do if (v259==3) then v260.Visible=false;v79[v258]=v260;break;end if (v259==(0 -0)) then local v427=0 + 0 ;while true do if (v427==(0 + 0)) then if v79[v258] then return;end v260=Drawing.new(v7("\35\54\145\28","\104\119\83\233"));v427=3 -2 ;end if (v427==(1 + 0)) then v260.Size=1030 -(829 + 190) ;v259=1;break;end end end if ((7 -5)==v259) then v260.Color=Color3.fromRGB(100,227 -47 ,352 -97 );v260.Font=7 -4 ;v260.Text=v7("\209\221\1\7\109\209\221\21\17","\35\149\152\71\66");v259=1 + 2 ;end if (v259==(1 + 0)) then v260.Center=false;v260.Outline=true;v260.OutlineColor=Color3.new(0 -0 ,0 + 0 ,613 -(520 + 93) );v259=2;end end end local function v87(v261) local v262=0;while true do if ((276 -(259 + 17))==v262) then if v75[v261] then v75[v261]:Destroy();v75[v261]=nil;end if v76[v261] then local v511=0;while true do if (v511==0) then for v610,v611 in pairs(v76[v261]) do v611:Remove();end v76[v261]=nil;break;end end end v262=1 + 0 ;end if (v262==(1 + 1)) then if v79[v261] then local v512=0 -0 ;while true do if (v512==(591 -(396 + 195))) then v79[v261]:Remove();v79[v261]=nil;break;end end end break;end if (v262==1) then if v77[v261] then local v513=0 -0 ;local v514;while true do if (v513==0) then v514=0;while true do if (v514==(1761 -(440 + 1321))) then v77[v261]:Remove();v77[v261]=nil;break;end end break;end end end if v78[v261] then local v515=1829 -(1059 + 770) ;while true do if ((0 -0)==v515) then v78[v261]:Remove();v78[v261]=nil;break;end end end v262=2;end end end task.spawn(function() while task.wait(545.3 -(424 + 121) ) do if  not v24.espDefender then for v461,v462 in pairs(v80) do v87(v461);end v80={};else local v434={};for v463,v464 in ipairs(v8:GetPlayers()) do if (v81(v464) and v464.Character) then v434[v464]=true;v80[v464]=true;v82(v464);v83(v464);v84(v464);v85(v464);v86(v464);end end for v465,v466 in pairs(v80) do if  not v434[v465] then v87(v465);v80[v465]=nil;end end end end end);v10.RenderStepped:Connect(function() local v263=0 + 0 ;local v264;local v265;local v266;while true do if (v263==(1348 -(641 + 706))) then v265=v264.X/(1 + 1) ;v266=v264.Y;v263=442 -(249 + 191) ;end if (v263==(0 -0)) then if  not v24.espDefender then return;end v264=v16.ViewportSize;v263=1 + 0 ;end if (v263==(7 -5)) then for v467,v468 in pairs(v80) do if v467.Character then local v566=v467.Character:FindFirstChild(v7("\49\253\79\177\52\22\225\70\130\53\22\252\114\177\40\13","\90\121\136\34\208"));if v566 then local v604=v16:WorldToViewportPoint(v566.Position);if (v604.Z<=(427 -(183 + 244))) then local v612=v76[v467];if v612 then for v699,v700 in pairs(v612) do v700.Visible=false;end end local v613=v78[v467];if v613 then v613.Visible=false;end local v614=v79[v467];if v614 then v614.Visible=false;end else local v615=v76[v467];if v615 then local v651=0 + 0 ;local v652;local v653;local v654;local v655;local v656;local v657;local v658;local v659;local v660;while true do if ((732 -(434 + 296))==v651) then local v718=0 -0 ;while true do if (v718==(512 -(169 + 343))) then v656=v604.X + v653 ;v657=v604.Y-v654 ;v718=1;end if (v718==(2 + 0)) then v651=3;break;end if (v718==(1 -0)) then v658=v604.Y + v654 ;v615.T.From=Vector2.new(v655,v657);v718=2;end end end if (v651==0) then v652=(293 -193)/v604.Z ;v653=(2.2 + 0) * v652 ;v654=(8.2 -5) * v652 ;v653=math.max(v653,10);v651=1;end if (v651==(1127 -(651 + 472))) then v615.L.To=Vector2.new(v655,v658);v615.R.From=Vector2.new(v656,v657);v615.R.To=Vector2.new(v656,v658);for v732,v733 in pairs(v615) do v733.Visible=true;end v651=4 + 1 ;end if (v651==(1 + 0)) then v654=math.max(v654,19 -3 );v653=math.min(v653,45);v654=math.min(v654,553 -(397 + 86) );v655=v604.X-v653 ;v651=2;end if (v651==3) then v615.T.To=Vector2.new(v656,v657);v615.B.From=Vector2.new(v655,v658);v615.B.To=Vector2.new(v656,v658);v615.L.From=Vector2.new(v655,v657);v651=4;end if (5==v651) then v659=v78[v467];if v659 then local v736=0;while true do if (v736==1) then v659.Visible=true;break;end if (v736==(876 -(423 + 453))) then v659.Text=v467.Name;v659.Position=Vector2.new(v604.X,v657-(2 + 12) );v736=1 + 0 ;end end end v660=v79[v467];if v660 then local v737=0;while true do if (v737==(1 + 0)) then v660.Visible=true;break;end if (v737==0) then v660.Text="D\nE\nF\nE\nN\nD\nE\nR\nS";v660.Position=Vector2.new(v655-12 ,v657);v737=1 + 0 ;end end end break;end end end local v616=v77[v467];if v616 then v616.From=Vector2.new(v265,v266);v616.To=Vector2.new(v604.X,v604.Y);v616.Visible=true;end end end end end break;end end end);v20:SetLibrary(v19);v21:SetLibrary(v19);v21:IgnoreThemeSettings();v21:SetIgnoreIndexes({});v20:SetFolder(v7("\245\1\90\27\203\26\80\6","\126\167\110\53"));v21:SetFolder(v7("\15\31\33\253\208\43\56\8\97\200\221\49\41\3\39\234","\95\93\112\78\152\188"));v21:BuildConfigSection(v23["UI Settings"]);v20:ApplyToTab(v23["UI Settings"]);task.spawn(function() task.wait(0.1);pcall(function() local v296=0;while true do if (v296==(0 + 0)) then v20:SetLibrary(v19);v19:SetTheme(v7("\224\248\128\1\236\167\193\213","\178\161\149\229\117\132\222"));break;end end end);end);v22:SelectTab(1191 -(50 + 1140) );v19:Notify({[v7("\188\210\201\160\164","\67\232\187\189\204\193\118\198")]=v7("\185\33\186\37\55\22\234\147","\143\235\78\213\64\91\98"),[v7("\174\71\138\253\117\184\153","\214\237\40\228\137\16")]="v20 • Фиолетовая тема + все функции",[v7("\161\246\253\216\23\175\138\237","\198\229\131\143\185\99")]=5 + 0 });print("═══════════════════════════════");print("✅ Rooeltex v20 загружен");print("🟣 Тема: Amethyst (фиолетовая)");print("═══════════════════════════════");
+local player = Players.LocalPlayer
+local camera = Workspace.CurrentCamera
+local HAS_DRAWING = (Drawing ~= nil)
+
+-- ============================================
+--   ЗАГРУЗКА OBSIDIAN
+-- ============================================
+
+local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
+local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
+
+-- ============================================
+--   ОКНО
+-- ============================================
+
+local Window = Library:CreateWindow({
+    Title = "Rooeltex",
+    Footer = "premium edition • v20.0",
+    Icon = 95816097006870,
+    NotifySide = "Right",
+    ShowCustomCursor = true,
+    AnimationSpeed = 1.3,
+})
+
+local Tabs = {
+    Visuals = Window:AddTab("Visuals", "eye"),
+    Names = Window:AddTab("Names", "tag"),
+    Aim = Window:AddTab("Aim", "crosshair"),
+    Misc = Window:AddTab("Misc", "settings"),
+    ["UI Settings"] = Window:AddTab("UI & Settings", "sliders"),
+}
+
+-- ============================================
+--   СОСТОЯНИЕ
+-- ============================================
+
+local STATE = {
+    espPlayer   = true,
+    espBot      = true,
+    espDefender = false,
+    fullbright  = false,
+    fov         = 70,
+    fogEnabled  = false,
+    spinEnabled = false,
+    spinSpeed   = 15,
+    flyEnabled  = false,
+    flySpeed    = 60,
+    killAll     = false,
+    killDelay   = 0.25,
+    killRockets = false,
+    highlight   = false,
+    tracers     = false,
+    timeMode    = "off",
+    showDroneName    = true,
+    showDroneType    = true,
+    showDroneDist    = true,
+    showDroneDroneId = false,
+    nameFontSize     = 14,
+    nameColorMode    = "team",
+    speedEnabled     = false,
+    speedValue       = 32,
+    jumpEnabled      = false,
+    jumpValue        = 75,
+    infJumpEnabled   = false,
+    noclipEnabled    = false,
+    antiAfkEnabled   = false,
+    hitboxEnabled    = false,
+    hitboxSize       = 15,
+    hitboxVisible    = true,
+    -- NEW FUNC
+    autoFarmEnabled  = false,
+    autoFarmRadius   = 500,
+    spinBotEnabled   = false,
+    spinBotSpeed     = 20,
+    fullAutoEnabled  = false,
+    fullAutoDelay    = 0.1,
+    aimbotEnabled    = false,
+    aimbotFov        = 300,
+    aimbotSmooth     = 0.2,
+    flightEnabled    = false,
+    flightSpeed      = 100,
+    rocketCounter    = 0,
+    droneCounter     = 0,
+}
+
+-- ============================================
+--   РАКЕТЫ
+-- ============================================
+
+local ROCKET_NAMES = {
+    ["X101"]     = true,
+    ["Flamingo"] = true,
+    ["Neptun"]   = true,
+    ["Kalibr"]   = true,
+    ["Tomahawk"] = true,
+    ["Shadow"]   = true,
+    ["Ten"]      = true,
+    ["Tень"]     = true,
+}
+
+local ROCKET_CFG = {
+    KILL_DELAY  = 0.15,
+    WAIT_DEATH  = 1.5,
+    CHECK_EMPTY = 0.6,
+    TP_COOLDOWN = 0.1,
+    DEATH_POLL  = 0.1,
+}
+
+-- ============================================
+--   НАЗВАНИЯ ДРОНОВ
+-- ============================================
+
+local function getDroneDisplayName(drone)
+    local droneName = drone:GetAttribute("DroneName")
+    if not droneName then return "Unknown" end
+    local displayNames = {
+        ["FPV"]        = "FPV Drone",
+        ["FPVOld"]     = "FPV Old",
+        ["Shahed136"]  = "Shahed-136",
+        ["Shahed107"]  = "Shahed-107",
+        ["Shahed238"]  = "Shahed-238",
+        ["Gerbera"]    = "Gerbera",
+        ["Delta"]      = "Delta",
+        ["Lisica"]     = "Lisica",
+        ["Lancet"]     = "Lancet",
+        ["Molniva"]    = "Molniya",
+        ["Neptun"]     = "Neptun",
+        ["Kalibr"]     = "Kalibr",
+        ["BM35"]       = "BM-35",
+        ["Geran5"]     = "Geran-5",
+        ["X101"]       = "X-101",
+        ["Flamingo"]   = "Flamingo",
+        ["Tomahawk"]   = "Tomahawk",
+        ["Shadow"]     = "Shadow",
+        ["Ten"]        = "Тень",
+    }
+    return displayNames[droneName] or droneName
+end
+
+local function getDroneType(drone)
+    local isPD = drone:GetAttribute("IsPlayerDrone")
+    if isPD == true then return "Player" end
+    if isPD == false then return "Bot" end
+    local oid = drone:GetAttribute("OwnerUserId")
+    if oid and oid ~= 0 then return "Player" end
+    return "Bot"
+end
+
+local function getNameColor(drone)
+    local t = getDroneType(drone)
+    if STATE.nameColorMode == "team" then
+        return t == "Player" and Color3.fromRGB(0, 255, 100) or Color3.fromRGB(255, 60, 60)
+    elseif STATE.nameColorMode == "white" then
+        return Color3.fromRGB(255, 255, 255)
+    elseif STATE.nameColorMode == "cyan" then
+        return Color3.fromRGB(80, 200, 255)
+    end
+    return Color3.fromRGB(255, 255, 255)
+end
+
+-- ============================================
+--   FULLBRIGHT / FOG
+-- ============================================
+
+local originalLighting = nil
+local originalFog = nil
+
+local function applyFullbright()
+    if originalLighting then return end
+    originalLighting = {
+        Ambient = Lighting.Ambient, OutdoorAmbient = Lighting.OutdoorAmbient,
+        Brightness = Lighting.Brightness, ClockTime = Lighting.ClockTime,
+        FogEnd = Lighting.FogEnd, FogStart = Lighting.FogStart,
+        GlobalShadows = Lighting.GlobalShadows,
+    }
+    Lighting.Ambient = Color3.fromRGB(200, 200, 200)
+    Lighting.OutdoorAmbient = Color3.fromRGB(200, 200, 200)
+    Lighting.Brightness = 3
+    Lighting.ClockTime = 12
+    Lighting.FogEnd = 100000
+    Lighting.FogStart = 0
+    Lighting.GlobalShadows = false
+end
+
+local function restoreFullbright()
+    if not originalLighting then return end
+    Lighting.Ambient = originalLighting.Ambient
+    Lighting.OutdoorAmbient = originalLighting.OutdoorAmbient
+    Lighting.Brightness = originalLighting.Brightness
+    Lighting.ClockTime = originalLighting.ClockTime
+    Lighting.FogEnd = originalLighting.FogEnd
+    Lighting.FogStart = originalLighting.FogStart
+    Lighting.GlobalShadows = originalLighting.GlobalShadows
+    originalLighting = nil
+end
+
+local function applyFog()
+    if originalFog then return end
+    originalFog = { FogColor = Lighting.FogColor, FogStart = Lighting.FogStart, FogEnd = Lighting.FogEnd }
+    Lighting.FogColor = Color3.fromRGB(140, 130, 115)
+    Lighting.FogStart = 40
+    Lighting.FogEnd = 400
+end
+
+local function restoreFog()
+    if not originalFog then return end
+    Lighting.FogColor = originalFog.FogColor
+    Lighting.FogStart = originalFog.FogStart
+    Lighting.FogEnd = originalFog.FogEnd
+    originalFog = nil
+end
+
+-- ============================================
+--   ВРЕМЯ СУТОК
+-- ============================================
+
+local originalTime = nil
+local timeConnection = nil
+
+local function removeSky()
+    for _, obj in ipairs(Lighting:GetChildren()) do
+        if obj:IsA("Sky") then obj:Destroy() end
+    end
+end
+
+local function makeSky(name, sunSize, moonSize, stars)
+    removeSky()
+    local sky = Instance.new("Sky")
+    sky.Name = name
+    sky.SkyboxBk = "rbxassetid://6444884337"
+    sky.SkyboxDn = "rbxassetid://6444884337"
+    sky.SkyboxFt = "rbxassetid://6444884337"
+    sky.SkyboxLf = "rbxassetid://6444884337"
+    sky.SkyboxRt = "rbxassetid://6444884337"
+    sky.SkyboxUp = "rbxassetid://6444884337"
+    if sunSize then sky.SunAngularSize = sunSize end
+    if moonSize then sky.MoonAngularSize = moonSize end
+    sky.StarCount = stars
+    sky.Parent = Lighting
+end
+
+local function setupSunset()
+    makeSky("SunsetSky", 28, 11, 3000)
+    Lighting.Brightness = 1.5
+    Lighting.ClockTime = 18.5
+    Lighting.GeographicLatitude = 20
+    Lighting.Ambient = Color3.fromRGB(120, 80, 70)
+    Lighting.OutdoorAmbient = Color3.fromRGB(160, 100, 80)
+    Lighting.EnvironmentDiffuseScale = 0.6
+    Lighting.EnvironmentSpecularScale = 0.4
+    Lighting.GlobalShadows = true
+    Lighting.FogColor = Color3.fromRGB(200, 140, 100)
+    Lighting.FogStart = 200
+    Lighting.FogEnd = 4000
+end
+
+local function setupDay()
+    makeSky("DaySky", 21, nil, 0)
+    Lighting.Brightness = 3
+    Lighting.ClockTime = 14
+    Lighting.GeographicLatitude = 0
+    Lighting.Ambient = Color3.fromRGB(150, 150, 150)
+    Lighting.OutdoorAmbient = Color3.fromRGB(150, 150, 150)
+    Lighting.EnvironmentDiffuseScale = 1
+    Lighting.EnvironmentSpecularScale = 1
+    Lighting.GlobalShadows = true
+    Lighting.FogColor = Color3.fromRGB(200, 200, 220)
+    Lighting.FogStart = 0
+    Lighting.FogEnd = 100000
+end
+
+local function setupNight()
+    makeSky("NightSky", nil, 11, 5000)
+    Lighting.Brightness = 1
+    Lighting.ClockTime = 0
+    Lighting.Ambient = Color3.fromRGB(20, 20, 40)
+    Lighting.OutdoorAmbient = Color3.fromRGB(30, 30, 60)
+    Lighting.EnvironmentDiffuseScale = 0.3
+    Lighting.EnvironmentSpecularScale = 0.3
+    Lighting.GlobalShadows = true
+    Lighting.FogColor = Color3.fromRGB(15, 15, 30)
+    Lighting.FogStart = 100
+    Lighting.FogEnd = 5000
+end
+
+local function startTimeLoop(mode)
+    if timeConnection then
+        timeConnection:Disconnect()
+        timeConnection = nil
+    end
+    if not originalTime then
+        originalTime = {
+            ClockTime = Lighting.ClockTime,
+            Brightness = Lighting.Brightness,
+            Ambient = Lighting.Ambient,
+            OutdoorAmbient = Lighting.OutdoorAmbient,
+            FogColor = Lighting.FogColor,
+            FogStart = Lighting.FogStart,
+            FogEnd = Lighting.FogEnd,
+            GlobalShadows = Lighting.GlobalShadows,
+            EnvironmentDiffuseScale = Lighting.EnvironmentDiffuseScale,
+            EnvironmentSpecularScale = Lighting.EnvironmentSpecularScale,
+            GeographicLatitude = Lighting.GeographicLatitude,
+        }
+    end
+    STATE.timeMode = mode
+    if mode == "day" then setupDay()
+    elseif mode == "night" then setupNight()
+    elseif mode == "sunset" then setupSunset() end
+    timeConnection = RunService.Heartbeat:Connect(function()
+        if STATE.timeMode == "day" then
+            Lighting.ClockTime = 14
+        elseif STATE.timeMode == "night" then
+            Lighting.ClockTime = 0
+        elseif STATE.timeMode == "sunset" then
+            Lighting.ClockTime = 18.5
+        end
+    end)
+end
+
+local function restoreTime()
+    if timeConnection then
+        timeConnection:Disconnect()
+        timeConnection = nil
+    end
+    removeSky()
+    if originalTime then
+        Lighting.ClockTime = originalTime.ClockTime
+        Lighting.Brightness = originalTime.Brightness
+        Lighting.Ambient = originalTime.Ambient
+        Lighting.OutdoorAmbient = originalTime.OutdoorAmbient
+        Lighting.FogColor = originalTime.FogColor
+        Lighting.FogStart = originalTime.FogStart
+        Lighting.FogEnd = originalTime.FogEnd
+        Lighting.GlobalShadows = originalTime.GlobalShadows
+        Lighting.EnvironmentDiffuseScale = originalTime.EnvironmentDiffuseScale
+        Lighting.EnvironmentSpecularScale = originalTime.EnvironmentSpecularScale
+        Lighting.GeographicLatitude = originalTime.GeographicLatitude
+    end
+    STATE.timeMode = "off"
+end
+
+-- ============================================
+--   SPIN
+-- ============================================
+
+local spinConnection = nil
+
+local function startSpin()
+    if spinConnection then return end
+    local char = player.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    local bav = Instance.new("BodyAngularVelocity")
+    bav.Name = "SpinBAV"
+    bav.MaxTorque = Vector3.new(0, 1e5, 0)
+    bav.AngularVelocity = Vector3.new(0, STATE.spinSpeed, 0)
+    bav.P = 500
+    bav.Parent = hrp
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if hum then hum.AutoRotate = false end
+    spinConnection = RunService.Heartbeat:Connect(function()
+        if not STATE.spinEnabled then return end
+        local c = player.Character
+        if not c then return end
+        local h = c:FindFirstChild("HumanoidRootPart")
+        if not h then return end
+        local b = h:FindFirstChild("SpinBAV")
+        if b then b.AngularVelocity = Vector3.new(0, STATE.spinSpeed, 0) end
+    end)
+end
+
+local function stopSpin()
+    if spinConnection then spinConnection:Disconnect(); spinConnection = nil end
+    local char = player.Character
+    if char then
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if hrp then
+            local bav = hrp:FindFirstChild("SpinBAV")
+            if bav then bav:Destroy() end
+        end
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        if hum then hum.AutoRotate = true end
+    end
+end
+
+-- ============================================
+--   FLY
+-- ============================================
+
+local flyConnection = nil
+
+local function startFly()
+    if flyConnection then return end
+    local char = player.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    hrp.CFrame = hrp.CFrame + Vector3.new(0, 5, 0)
+    local bv = Instance.new("BodyVelocity")
+    bv.Name = "FlyBV"
+    bv.MaxForce = Vector3.new(1e5, 1e5, 1e5)
+    bv.Velocity = Vector3.new(0, 0, 0)
+    bv.P = 1250
+    bv.Parent = hrp
+    local bg = Instance.new("BodyGyro")
+    bg.Name = "FlyBG"
+    bg.MaxTorque = Vector3.new(1e5, 1e5, 1e5)
+    bg.P = 3000
+    bg.D = 50
+    bg.CFrame = hrp.CFrame
+    bg.Parent = hrp
+    for _, part in ipairs(char:GetDescendants()) do
+        if part:IsA("BasePart") then part.CanCollide = false end
+    end
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if hum then hum.PlatformStand = true end
+    flyConnection = RunService.RenderStepped:Connect(function()
+        if not STATE.flyEnabled then return end
+        local c = player.Character
+        if not c then return end
+        local h = c:FindFirstChild("HumanoidRootPart")
+        if not h then return end
+        if not bv or not bv.Parent then return end
+        if not bg or not bg.Parent then return end
+        local hm = c:FindFirstChildOfClass("Humanoid")
+        if not hm then return end
+        local moveDir = hm.MoveDirection
+        local velocity = Vector3.new(0, 0, 0)
+        if moveDir.Magnitude > 0.05 then
+            local flatDir = Vector3.new(moveDir.X, 0, moveDir.Z)
+            if flatDir.Magnitude > 0.01 then
+                velocity = velocity + flatDir.Unit * STATE.flySpeed
+            end
+        end
+        local lookY = camera.CFrame.LookVector.Y
+        if math.abs(moveDir.Z) > 0.3 and math.abs(lookY) > 0.15 then
+            velocity = velocity + Vector3.new(0, lookY * STATE.flySpeed, 0)
+        end
+        bv.Velocity = velocity
+        bg.CFrame = camera.CFrame
+    end)
+end
+
+local function stopFly()
+    if flyConnection then flyConnection:Disconnect(); flyConnection = nil end
+    local char = player.Character
+    if char then
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if hrp then
+            local bv = hrp:FindFirstChild("FlyBV")
+            if bv then bv:Destroy() end
+            local bg = hrp:FindFirstChild("FlyBG")
+            if bg then bg:Destroy() end
+        end
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        if hum then hum.PlatformStand = false end
+        for _, part in ipairs(char:GetDescendants()) do
+            if part:IsA("BasePart") then part.CanCollide = true end
+        end
+    end
+end
+
+-- ============================================
+--   KILL ALL
+-- ============================================
+
+local killing = false
+
+local function checkIsPlayer(drone)
+    local isPD = drone:GetAttribute("IsPlayerDrone")
+    if isPD == true then return true end
+    if isPD == false then return false end
+    local oid = drone:GetAttribute("OwnerUserId")
+    if oid and oid ~= 0 then return true end
+    return false
+end
+
+local function findDroneRoot(drone)
+    if drone.PrimaryPart and drone.PrimaryPart:IsA("BasePart") then
+        return drone.PrimaryPart
+    end
+    local body = drone:FindFirstChild("Body")
+    if body and body:IsA("BasePart") then return body end
+    for _, obj in ipairs(drone:GetDescendants()) do
+        if obj:IsA("BasePart") then return obj end
+    end
+    return nil
+end
+
+local function getAllDrones()
+    local list = {}
+    local spawned = Workspace:FindFirstChild("Drones")
+        and Workspace.Drones:FindFirstChild("SpawnedDrones")
+    if not spawned then return list end
+    for _, d in ipairs(spawned:GetChildren()) do
+        if d:IsA("Model")
+        and d:GetAttribute("Destroyed") ~= true
+        and d:GetAttribute("DroneName") ~= nil then
+            local root = findDroneRoot(d)
+            if root then table.insert(list, { drone = d, root = root }) end
+        end
+    end
+    return list
+end
+
+local function waitForDeath(drone, timeout)
+    local start = tick()
+    while tick() - start < timeout do
+        if not drone.Parent then return true end
+        if drone:GetAttribute("Destroyed") == true then return true end
+        if not STATE.killAll then return false end
+        task.wait(0.05)
+    end
+    return false
+end
+
+local function startKillAll()
+    if killing then return end
+    killing = true
+    if STATE.flyEnabled then STATE.flyEnabled = false; stopFly() end
+    if STATE.spinEnabled then STATE.spinEnabled = false; stopSpin() end
+    task.wait(0.2)
+    while STATE.killAll do
+        local drones = getAllDrones()
+        if #drones == 0 then
+            task.wait(0.5)
+        else
+            local target = drones[1]
+            local char = player.Character
+            if char then
+                local hrp = char:FindFirstChild("HumanoidRootPart")
+                if hrp then
+                    local hum = char:FindFirstChildOfClass("Humanoid")
+                    if hum then hum.PlatformStand = true end
+                    hrp.CFrame = CFrame.new(target.root.Position)
+                    hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+                    waitForDeath(target.drone, 1.5)
+                    task.wait(STATE.killDelay)
+                else
+                    task.wait(0.1)
+                end
+            else
+                task.wait(0.1)
+            end
+        end
+    end
+    local char = player.Character
+    if char then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        if hum then hum.PlatformStand = false end
+    end
+    killing = false
+end
+
+-- ============================================
+--   KILL ROCKETS
+-- ============================================
+
+local killingRockets = false
+local rocketStartCFrame = nil
+
+local function isRocket(drone)
+    local name = drone:GetAttribute("DroneName")
+    if not name then return false end
+    return ROCKET_NAMES[name] == true
+end
+
+local function getRocketDrones()
+    local list = {}
+    local spawned = Workspace:FindFirstChild("Drones")
+        and Workspace.Drones:FindFirstChild("SpawnedDrones")
+    if not spawned then return list end
+    for _, d in ipairs(spawned:GetChildren()) do
+        if d:IsA("Model")
+        and d:GetAttribute("Destroyed") ~= true
+        and d:GetAttribute("DroneName") ~= nil
+        and isRocket(d) then
+            local root = findDroneRoot(d)
+            if root then
+                table.insert(list, {
+                    drone = d,
+                    root  = root,
+                    name  = d:GetAttribute("DroneName"),
+                })
+            end
+        end
+    end
+    return list
+end
+
+local function rocketTeleport(cf)
+    local char = player.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+    hrp.CFrame = cf
+end
+
+local function clearBodyMovers()
+    local char = player.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    for _, obj in ipairs(hrp:GetChildren()) do
+        if obj:IsA("BodyPosition") or obj:IsA("BodyVelocity")
+        or obj:IsA("BodyGyro") or obj:IsA("AlignPosition")
+        or obj:IsA("AlignOrientation") then
+            obj:Destroy()
+        end
+    end
+end
+
+local function startKillRockets()
+    if killingRockets then return end
+    killingRockets = true
+
+    local char = player.Character
+    if char then
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if hrp then rocketStartCFrame = hrp.CFrame end
+    end
+
+    clearBodyMovers()
+    if STATE.flyEnabled then STATE.flyEnabled = false; stopFly() end
+    if STATE.spinEnabled then STATE.spinEnabled = false; stopSpin() end
+    task.wait(0.1)
+
+    local rockets = getRocketDrones()
+
+    if #rockets == 0 then
+        Library:Notify({ Title = "Kill Rockets", Content = "No rockets", Duration = 3 })
+        print("[Kill Rockets] ❌ No rockets")
+        killingRockets = false
+        rocketStartCFrame = nil
+        return
+    end
+
+    Library:Notify({ Title = "Kill Rockets", Content = "Найдено: " .. #rockets, Duration = 3 })
+    print("[Kill Rockets] ▶ Старт. Найдено:", #rockets)
+
+    local emptyTimer = 0
+
+    while STATE.killRockets do
+        rockets = getRocketDrones()
+
+        if #rockets == 0 then
+            emptyTimer = emptyTimer + ROCKET_CFG.KILL_DELAY
+            if emptyTimer >= ROCKET_CFG.CHECK_EMPTY then
+                print("[Kill Rockets] ✅ Всё сбито. Возврат.")
+                break
+            end
+            task.wait(ROCKET_CFG.KILL_DELAY)
+        else
+            emptyTimer = 0
+            local target = rockets[1]
+            print(string.format("[Kill Rockets] 🎯 %s | %d шт.",
+                tostring(target.name), #rockets))
+
+            rocketTeleport(CFrame.new(target.root.Position))
+
+            local t0 = tick()
+            while tick() - t0 < ROCKET_CFG.WAIT_DEATH do
+                if not target.drone.Parent then break end
+                if target.drone:GetAttribute("Destroyed") == true then break end
+                if not STATE.killRockets then break end
+                task.wait(ROCKET_CFG.DEATH_POLL)
+            end
+
+            task.wait(ROCKET_CFG.TP_COOLDOWN)
+        end
+    end
+
+    if rocketStartCFrame then
+        rocketTeleport(rocketStartCFrame)
+        print("[Kill Rockets] 🏠 Возврат выполнен")
+        rocketStartCFrame = nil
+    end
+
+    local char2 = player.Character
+    if char2 then
+        local hum2 = char2:FindFirstChildOfClass("Humanoid")
+        if hum2 then hum2.PlatformStand = false end
+    end
+
+    killingRockets = false
+end
+
+local function stopKillRockets()
+    STATE.killRockets = false
+end
+
+-- ============================================
+--   HITBOX EXPANDER (отдельный парт!)
+-- ============================================
+
+local hitboxParts = {}
+local hitboxHighlights = {}
+
+local function createHitboxPart(drone)
+    local root = findDroneRoot(drone)
+    if not root then return end
+
+    local existing = hitboxParts[drone]
+    if existing and existing.Parent then
+        existing.Size = Vector3.new(STATE.hitboxSize, STATE.hitboxSize, STATE.hitboxSize)
+        existing.CFrame = root.CFrame
+        return
+    end
+
+    local hb = Instance.new("Part")
+    hb.Name = "Rooeltex_Hitbox"
+    hb.Size = Vector3.new(STATE.hitboxSize, STATE.hitboxSize, STATE.hitboxSize)
+    hb.CFrame = root.CFrame
+    hb.Anchored = true
+    hb.CanCollide = false
+    hb.CanQuery = true
+    hb.CanTouch = true
+    hb.Massless = true
+    hb.Material = Enum.Material.ForceField
+    hb.Color = Color3.fromRGB(255, 0, 0)
+    hb.Transparency = 0.7
+    hb.Parent = drone
+    hitboxParts[drone] = hb
+
+    if STATE.hitboxVisible then
+        local hl = Instance.new("Highlight")
+        hl.Name = "RooeltexHitboxVisual"
+        hl.Adornee = hb
+        hl.FillColor = Color3.fromRGB(255, 30, 30)
+        hl.FillTransparency = 0.5
+        hl.OutlineColor = Color3.fromRGB(255, 0, 0)
+        hl.OutlineTransparency = 0
+        hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        hl.Parent = CoreGui
+        hitboxHighlights[drone] = hl
+    end
+end
+
+local function removeHitboxPart(drone)
+    local hb = hitboxParts[drone]
+    if hb then hb:Destroy(); hitboxParts[drone] = nil end
+    local hl = hitboxHighlights[drone]
+    if hl then hl:Destroy(); hitboxHighlights[drone] = nil end
+end
+
+local function applyHitbox()
+    local list = getAllDrones()
+    for _, entry in ipairs(list) do
+        createHitboxPart(entry.drone)
+    end
+end
+
+local function stopHitbox()
+    for drone, _ in pairs(hitboxParts) do
+        removeHitboxPart(drone)
+    end
+    hitboxParts = {}
+    hitboxHighlights = {}
+end
+
+task.spawn(function()
+    while task.wait(0.1) do
+        if STATE.hitboxEnabled then
+            applyHitbox()
+        end
+    end
+end)
+
+-- ============================================
+--   MISC FUNCTIONS
+-- ============================================
+
+-- SPEED
+local speedConnection = nil
+local originalWalkSpeed = 16
+
+local function applySpeed()
+    local char = player.Character
+    if not char then return end
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if not hum then return end
+    if STATE.speedEnabled then hum.WalkSpeed = STATE.speedValue end
+end
+
+local function startSpeed()
+    local char = player.Character
+    if not char then return end
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if not hum then return end
+    originalWalkSpeed = hum.WalkSpeed
+    applySpeed()
+    if speedConnection then speedConnection:Disconnect() end
+    speedConnection = RunService.Heartbeat:Connect(function()
+        if not STATE.speedEnabled then return end
+        local c = player.Character
+        if not c then return end
+        local h = c:FindFirstChildOfClass("Humanoid")
+        if h then h.WalkSpeed = STATE.speedValue end
+    end)
+end
+
+local function stopSpeed()
+    if speedConnection then speedConnection:Disconnect(); speedConnection = nil end
+    local char = player.Character
+    if char then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        if hum then hum.WalkSpeed = originalWalkSpeed end
+    end
+end
+
+-- JUMP
+local jumpConnection = nil
+local originalJumpPower = 50
+
+local function applyJump()
+    local char = player.Character
+    if not char then return end
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if not hum then return end
+    if STATE.jumpEnabled then
+        hum.UseJumpPower = true
+        hum.JumpPower = STATE.jumpValue
+    end
+end
+
+local function startJump()
+    local char = player.Character
+    if not char then return end
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if not hum then return end
+    originalJumpPower = hum.JumpPower
+    applyJump()
+    if jumpConnection then jumpConnection:Disconnect() end
+    jumpConnection = RunService.Heartbeat:Connect(function()
+        if not STATE.jumpEnabled then return end
+        local c = player.Character
+        if not c then return end
+        local h = c:FindFirstChildOfClass("Humanoid")
+        if h then
+            h.UseJumpPower = true
+            h.JumpPower = STATE.jumpValue
+        end
+    end)
+end
+
+local function stopJump()
+    if jumpConnection then jumpConnection:Disconnect(); jumpConnection = nil end
+    local char = player.Character
+    if char then
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        if hum then hum.JumpPower = originalJumpPower end
+    end
+end
+
+-- INFINITE JUMP
+local infJumpConnection = nil
+
+local function startInfJump()
+    if infJumpConnection then return end
+    infJumpConnection = UserInputService.JumpRequest:Connect(function()
+        if not STATE.infJumpEnabled then return end
+        local char = player.Character
+        if not char then return end
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        if hum then hum:ChangeState(Enum.HumanoidStateType.Jumping) end
+    end)
+end
+
+local function stopInfJump()
+    if infJumpConnection then infJumpConnection:Disconnect(); infJumpConnection = nil end
+end
+
+-- NOCLIP
+local noclipConnection = nil
+
+local function startNoclip()
+    if noclipConnection then return end
+    noclipConnection = RunService.Stepped:Connect(function()
+        if not STATE.noclipEnabled then return end
+        local char = player.Character
+        if not char then return end
+        for _, part in ipairs(char:GetDescendants()) do
+            if part:IsA("BasePart") and part.CanCollide then
+                part.CanCollide = false
+            end
+        end
+    end)
+end
+
+local function stopNoclip()
+    if noclipConnection then noclipConnection:Disconnect(); noclipConnection = nil end
+    local char = player.Character
+    if char then
+        for _, part in ipairs(char:GetDescendants()) do
+            if part:IsA("BasePart") then part.CanCollide = true end
+        end
+    end
+end
+
+-- ANTI-AFK
+local antiAfkConnection = nil
+
+local function startAntiAfk()
+    if antiAfkConnection then return end
+    antiAfkConnection = player.Idled:Connect(function()
+        if not STATE.antiAfkEnabled then return end
+        local vu = game:GetService("VirtualUser")
+        vu:CaptureController()
+        vu:ClickButton2(Vector2.new())
+    end)
+end
+
+local function stopAntiAfk()
+    if antiAfkConnection then antiAfkConnection:Disconnect(); antiAfkConnection = nil end
+end
+
+-- 🆕 SPIN BOT (быстрое вращение персонажа)
+local spinBotConnection = nil
+
+local function startSpinBot()
+    if spinBotConnection then return end
+    spinBotConnection = RunService.Heartbeat:Connect(function()
+        if not STATE.spinBotEnabled then return end
+        local char = player.Character
+        if not char then return end
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if not hrp then return end
+        hrp.CFrame = hrp.CFrame * CFrame.Angles(0, math.rad(STATE.spinBotSpeed), 0)
+    end)
+end
+
+local function stopSpinBot()
+    if spinBotConnection then spinBotConnection:Disconnect(); spinBotConnection = nil end
+end
+
+-- 🆕 AUTO FARM (телепорт к ближайшему дрону и убийство)
+local autoFarmRunning = false
+
+local function startAutoFarm()
+    if autoFarmRunning then return end
+    autoFarmRunning = true
+
+    while STATE.autoFarmEnabled do
+        local char = player.Character
+        if char then
+            local hrp = char:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                local drones = getAllDrones()
+                local closest = nil
+                local minDist = STATE.autoFarmRadius
+
+                for _, d in ipairs(drones) do
+                    local dist = (d.root.Position - hrp.Position).Magnitude
+                    if dist < minDist then
+                        minDist = dist
+                        closest = d
+                    end
+                end
+
+                if closest then
+                    hrp.CFrame = CFrame.new(closest.root.Position + Vector3.new(0, 5, 0))
+                    hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+                end
+            end
+        end
+        task.wait(0.5)
+    end
+    autoFarmRunning = false
+end
+
+local function stopAutoFarm()
+    STATE.autoFarmEnabled = false
+end
+
+-- 🆕 AIMBOT (поворот камеры к ближайшему дрону)
+local aimbotConnection = nil
+
+local function startAimbot()
+    if aimbotConnection then return end
+    aimbotConnection = RunService.RenderStepped:Connect(function()
+        if not STATE.aimbotEnabled then return end
+        local char = player.Character
+        if not char then return end
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if not hrp then return end
+
+        local drones = getAllDrones()
+        local closest = nil
+        local minAngle = STATE.aimbotFov
+
+        for _, d in ipairs(drones) do
+            local dir = (d.root.Position - camera.CFrame.Position).Unit
+            local look = camera.CFrame.LookVector
+            local dot = dir:Dot(look)
+            if dot > 0 then
+                local angle = math.deg(math.acos(math.clamp(dot, -1, 1)))
+                if angle < minAngle then
+                    minAngle = angle
+                    closest = d
+                end
+            end
+        end
+
+        if closest then
+            local targetCF = CFrame.new(camera.CFrame.Position, closest.root.Position)
+            camera.CFrame = camera.CFrame:Lerp(targetCF, STATE.aimbotSmooth)
+        end
+    end)
+end
+
+local function stopAimbot()
+    if aimbotConnection then aimbotConnection:Disconnect(); aimbotConnection = nil end
+end
+
+-- 🆕 FLIGHT (плавный полёт с WASD и пробелом)
+local flightConnection = nil
+
+local function startFlight()
+    if flightConnection then return end
+    local char = player.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+
+    local bg = Instance.new("BodyGyro")
+    bg.Name = "FlightBG"
+    bg.MaxTorque = Vector3.new(1e5, 1e5, 1e5)
+    bg.P = 1000
+    bg.D = 50
+    bg.CFrame = hrp.CFrame
+    bg.Parent = hrp
+
+    local bv = Instance.new("BodyVelocity")
+    bv.Name = "FlightBV"
+    bv.MaxForce = Vector3.new(1e5, 1e5, 1e5)
+    bv.Velocity = Vector3.new(0, 0, 0)
+    bv.P = 1250
+    bv.Parent = hrp
+
+    for _, part in ipairs(char:GetDescendants()) do
+        if part:IsA("BasePart") then part.CanCollide = false end
+    end
+
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if hum then hum.PlatformStand = true end
+
+    flightConnection = RunService.RenderStepped:Connect(function()
+        if not STATE.flightEnabled then return end
+        local c = player.Character
+        if not c then return end
+        local h = c:FindFirstChild("HumanoidRootPart")
+        if not h then return end
+        if not bg.Parent or not bv.Parent then return end
+
+        local hm = c:FindFirstChildOfClass("Humanoid")
+        if not hm then return end
+
+        local moveDir = hm.MoveDirection
+        local velocity = moveDir * STATE.flightSpeed
+
+        if UserInputService:IsKeyDown(Enum.KeyCode.Space) then
+            velocity = velocity + Vector3.new(0, STATE.flightSpeed, 0)
+        end
+        if UserInputService:IsKeyDown(Enum.KeyCode.LeftShift) then
+            velocity = velocity - Vector3.new(0, STATE.flightSpeed, 0)
+        end
+
+        bv.Velocity = velocity
+        bg.CFrame = camera.CFrame
+    end)
+end
+
+local function stopFlight()
+    if flightConnection then flightConnection:Disconnect(); flightConnection = nil end
+    local char = player.Character
+    if char then
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if hrp then
+            local bg = hrp:FindFirstChild("FlightBG")
+            if bg then bg:Destroy() end
+            local bv = hrp:FindFirstChild("FlightBV")
+            if bv then bv:Destroy() end
+        end
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        if hum then hum.PlatformStand = false end
+        for _, part in ipairs(char:GetDescendants()) do
+            if part:IsA("BasePart") then part.CanCollide = true end
+        end
+    end
+end
+
+-- ============================================
+--   ESP ДЛЯ ДРОНОВ
+-- ============================================
+
+local COLORS = { PLAYER = Color3.fromRGB(0, 255, 100), BOT = Color3.fromRGB(255, 60, 60) }
+local SETTINGS = {
+    SCAN_RATE    = 0.2,
+    BOX_THICK    = 1,
+    BOX_PADDING  = 35,
+    STREAM_RADIUS = 4,
+}
+
+local droneCache = {}
+local espData = {}
+local hlData = {}
+local tracerData = {}
+
+local function createHighlightFor(drone, isPlayer)
+    if hlData[drone] then return end
+    local hl = Instance.new("Highlight")
+    hl.Name = "RooeltexHL"
+    hl.Adornee = drone
+    hl.FillTransparency = 1
+    hl.OutlineColor = isPlayer and COLORS.PLAYER or COLORS.BOT
+    hl.OutlineTransparency = 0
+    hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+    hl.Parent = CoreGui
+    hlData[drone] = hl
+end
+
+local function createTracerFor(drone, isPlayer)
+    if tracerData[drone] then return end
+    local line = Drawing.new("Line")
+    line.Thickness = 1
+    line.Color = isPlayer and COLORS.PLAYER or COLORS.BOT
+    line.Transparency = 0.8
+    line.Visible = false
+    tracerData[drone] = line
+end
+
+local function createESPFor(drone, isPlayer)
+    if espData[drone] then return end
+    local color = isPlayer and COLORS.PLAYER or COLORS.BOT
+    local lineT = Drawing.new("Line")
+    local lineB = Drawing.new("Line")
+    local lineL = Drawing.new("Line")
+    local lineR = Drawing.new("Line")
+    for _, l in ipairs({lineT, lineB, lineL, lineR}) do
+        l.Thickness = SETTINGS.BOX_THICK
+        l.Color = color
+        l.Transparency = 1
+        l.Visible = false
+    end
+    local nameText = Drawing.new("Text")
+    nameText.Size = STATE.nameFontSize
+    nameText.Center = true
+    nameText.Outline = true
+    nameText.OutlineColor = Color3.new(0, 0, 0)
+    nameText.Color = color
+    nameText.Font = 2
+    nameText.Text = getDroneDisplayName(drone)
+    nameText.Visible = false
+    local typeText = Drawing.new("Text")
+    typeText.Size = 12
+    typeText.Center = true
+    typeText.Outline = true
+    typeText.OutlineColor = Color3.new(0, 0, 0)
+    typeText.Color = color
+    typeText.Font = 2
+    typeText.Text = getDroneType(drone)
+    typeText.Visible = false
+    local distText = Drawing.new("Text")
+    distText.Size = 11
+    distText.Center = true
+    distText.Outline = true
+    distText.OutlineColor = Color3.new(0, 0, 0)
+    distText.Color = Color3.fromRGB(235, 235, 235)
+    distText.Font = 3
+    distText.Text = "--"
+    distText.Visible = false
+    espData[drone] = {
+        lineT = lineT, lineB = lineB, lineL = lineL, lineR = lineR,
+        nameText = nameText, typeText = typeText, distText = distText,
+    }
+end
+
+local function hideESPElements(drone)
+    local data = espData[drone]
+    if data then
+        data.lineT.Visible = false
+        data.lineB.Visible = false
+        data.lineL.Visible = false
+        data.lineR.Visible = false
+        data.nameText.Visible = false
+        data.typeText.Visible = false
+        data.distText.Visible = false
+    end
+    local line = tracerData[drone]
+    if line then line.Visible = false end
+    local hl = hlData[drone]
+    if hl then hl.Enabled = false end
+end
+
+local function removeAllFor(drone)
+    local data = espData[drone]
+    if data then
+        for _, key in ipairs({"lineT","lineB","lineL","lineR","nameText","typeText","distText"}) do
+            if data[key] then data[key]:Remove() end
+        end
+        espData[drone] = nil
+    end
+    local line = tracerData[drone]
+    if line then line:Remove(); tracerData[drone] = nil end
+    local hl = hlData[drone]
+    if hl then hl:Destroy(); hlData[drone] = nil end
+    removeHitboxPart(drone)
+end
+
+task.spawn(function()
+    while task.wait(SETTINGS.SCAN_RATE) do
+        local list = {}
+        local spawned = Workspace:FindFirstChild("Drones")
+            and Workspace.Drones:FindFirstChild("SpawnedDrones")
+        if spawned then
+            for _, d in ipairs(spawned:GetChildren()) do
+                if d:IsA("Model")
+                and d:GetAttribute("Destroyed") ~= true
+                and d:GetAttribute("DroneName") ~= nil then
+                    local root = findDroneRoot(d)
+                    if root then
+                        table.insert(list, {
+                            drone = d, root = root,
+                            isPlayer = checkIsPlayer(d),
+                        })
+                    end
+                end
+            end
+        end
+        droneCache = list
+        STATE.droneCounter = #list
+        local currentSet = {}
+        for _, entry in ipairs(list) do
+            currentSet[entry.drone] = true
+            if STATE.highlight then createHighlightFor(entry.drone, entry.isPlayer) end
+            if STATE.tracers then createTracerFor(entry.drone, entry.isPlayer) end
+        end
+        for drone, _ in pairs(hlData) do
+            if not currentSet[drone] or not drone.Parent
+            or drone:GetAttribute("Destroyed") == true then
+                removeAllFor(drone)
+            end
+        end
+        for drone, _ in pairs(tracerData) do
+            if not currentSet[drone] or not drone.Parent
+            or drone:GetAttribute("Destroyed") == true then
+                removeAllFor(drone)
+            end
+        end
+        for drone, _ in pairs(espData) do
+            if not currentSet[drone] or not drone.Parent
+            or drone:GetAttribute("Destroyed") == true then
+                removeAllFor(drone)
+            end
+        end
+        for drone, _ in pairs(hitboxParts) do
+            if not drone.Parent or drone:GetAttribute("Destroyed") == true then
+                removeHitboxPart(drone)
+            end
+        end
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    local myPos
+    if player.Character then
+        local hrp = player.Character:FindFirstChild("HumanoidRootPart")
+        if hrp then myPos = hrp.Position end
+    end
+    if not myPos then myPos = camera.CFrame.Position end
+    local screenSize = camera.ViewportSize
+    local tracerStartX = screenSize.X / 2
+    local tracerStartY = screenSize.Y
+
+    for _, entry in ipairs(droneCache) do
+        local drone = entry.drone
+        local isPlayer = entry.isPlayer
+
+        if not drone.Parent
+        or drone:GetAttribute("Destroyed") == true then
+            hideESPElements(drone)
+        else
+            local root = findDroneRoot(drone)
+            if not root then
+                hideESPElements(drone)
+            else
+                local shouldShow = (isPlayer and STATE.espPlayer) or (not isPlayer and STATE.espBot)
+                if HAS_DRAWING and shouldShow then
+                    createESPFor(drone, isPlayer)
+                    local data = espData[drone]
+                    local pos = camera:WorldToViewportPoint(root.Position)
+                    if pos.Z > 0 then
+                        local scale = SETTINGS.BOX_PADDING * (100 / pos.Z)
+                        local sx = math.clamp(scale, 5, 200)
+                        local sy = math.clamp(scale, 5, 200)
+                        local minX, minY = pos.X - sx, pos.Y - sy
+                        local maxX, maxY = pos.X + sx, pos.Y + sy
+                        data.lineT.From = Vector2.new(minX, minY); data.lineT.To = Vector2.new(maxX, minY); data.lineT.Visible = true
+                        data.lineB.From = Vector2.new(minX, maxY); data.lineB.To = Vector2.new(maxX, maxY); data.lineB.Visible = true
+                        data.lineL.From = Vector2.new(minX, minY); data.lineL.To = Vector2.new(minX, maxY); data.lineL.Visible = true
+                        data.lineR.From = Vector2.new(maxX, minY); data.lineR.To = Vector2.new(maxX, maxY); data.lineR.Visible = true
+                        local centerX = (minX + maxX) / 2
+                        local lineHeight = 15
+                        local currentY = minY - 20
+                        if STATE.showDroneName then
+                            data.nameText.Text = getDroneDisplayName(drone)
+                            data.nameText.Color = getNameColor(drone)
+                            data.nameText.Position = Vector2.new(centerX, currentY)
+                            data.nameText.Visible = true
+                            currentY = currentY - lineHeight
+                        else
+                            data.nameText.Visible = false
+                        end
+                        if STATE.showDroneType then
+                            data.typeText.Text = getDroneType(drone)
+                            data.typeText.Color = getNameColor(drone)
+                            data.typeText.Position = Vector2.new(centerX, currentY)
+                            data.typeText.Visible = true
+                            currentY = currentY - lineHeight
+                        else
+                            data.typeText.Visible = false
+                        end
+                        if STATE.showDroneDist then
+                            local d = math.floor((root.Position - myPos).Magnitude)
+                            data.distText.Text = d .. "m"
+                            data.distText.Position = Vector2.new(centerX, currentY)
+                            data.distText.Visible = true
+                        else
+                            data.distText.Visible = false
+                        end
+                    else
+                        hideESPElements(drone)
+                    end
+                else
+                    local data = espData[drone]
+                    if data then
+                        data.lineT.Visible = false
+                        data.lineB.Visible = false
+                        data.lineL.Visible = false
+                        data.lineR.Visible = false
+                        data.nameText.Visible = false
+                        data.typeText.Visible = false
+                        data.distText.Visible = false
+                    end
+                end
+                if STATE.tracers and HAS_DRAWING then
+                    local line = tracerData[drone]
+                    if line then
+                        local screenPos = camera:WorldToViewportPoint(root.Position)
+                        if screenPos.Z > 0 then
+                            line.From = Vector2.new(tracerStartX, tracerStartY)
+                            line.To = Vector2.new(screenPos.X, screenPos.Y)
+                            line.Visible = true
+                        else
+                            line.Visible = false
+                        end
+                    end
+                else
+                    local line = tracerData[drone]
+                    if line then line.Visible = false end
+                end
+            end
+        end
+    end
+end)
+
+task.spawn(function()
+    while task.wait(1) do
+        local char = player.Character
+        if char then
+            local hrp = char:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                pcall(function()
+                    Workspace:RequestStreamAroundAsync(hrp.Position, SETTINGS.STREAM_RADIUS)
+                end)
+            end
+        end
+    end
+end)
+
+-- ============================================
+--   UI: VISUALS TAB
+-- ============================================
+
+local ESPGroup = Tabs.Visuals:AddLeftGroupbox("ESP")
+ESPGroup:AddToggle("espPlayer", {
+    Text = "ESP Player", Default = true,
+    Callback = function(v) STATE.espPlayer = v end,
+})
+ESPGroup:AddToggle("espBot", {
+    Text = "ESP Bot", Default = true,
+    Callback = function(v) STATE.espBot = v end,
+})
+ESPGroup:AddToggle("espDefender", {
+    Text = "ESP Defenders", Default = false,
+    Tooltip = "Синяя обводка на защитниках",
+    Callback = function(v) STATE.espDefender = v end,
+})
+ESPGroup:AddToggle("highlight", {
+    Text = "Highlight", Default = false,
+    Callback = function(v)
+        STATE.highlight = v
+        if v then
+            for _, entry in ipairs(droneCache) do
+                createHighlightFor(entry.drone, entry.isPlayer)
+            end
+        else
+            for drone, hl in pairs(hlData) do hl:Destroy() end
+            hlData = {}
+        end
+    end,
+})
+ESPGroup:AddToggle("tracers", {
+    Text = "Tracers", Default = false,
+    Callback = function(v)
+        STATE.tracers = v
+        if v then
+            for _, entry in ipairs(droneCache) do
+                createTracerFor(entry.drone, entry.isPlayer)
+            end
+        else
+            for drone, line in pairs(tracerData) do line:Remove() end
+            tracerData = {}
+        end
+    end,
+})
+
+local CameraGroup = Tabs.Visuals:AddRightGroupbox("Camera")
+CameraGroup:AddToggle("fullbright", {
+    Text = "Fullbright", Default = false,
+    Callback = function(v)
+        STATE.fullbright = v
+        if v then applyFullbright() else restoreFullbright() end
+    end,
+})
+CameraGroup:AddSlider("fov", {
+    Text = "Camera FOV", Default = 70,
+    Min = 70, Max = 120, Rounding = 1,
+    Callback = function(v)
+        camera.FieldOfView = v
+        STATE.fov = v
+    end,
+})
+
+local TimeGroup = Tabs.Visuals:AddLeftGroupbox("Time of Day")
+TimeGroup:AddButton({
+    Text = "☀️ День",
+    Func = function()
+        startTimeLoop("day")
+        Library:Notify({ Title = "Time", Content = "День ☀️", Duration = 3 })
+    end,
+})
+TimeGroup:AddButton({
+    Text = "🌙 Ночь",
+    Func = function()
+        startTimeLoop("night")
+        Library:Notify({ Title = "Time", Content = "Ночь 🌙", Duration = 3 })
+    end,
+})
+TimeGroup:AddButton({
+    Text = "🌅 Закат",
+    Func = function()
+        startTimeLoop("sunset")
+        Library:Notify({ Title = "Time", Content = "Закат 🌅", Duration = 3 })
+    end,
+})
+TimeGroup:AddButton({
+    Text = "❌ Выключить",
+    Func = function()
+        restoreTime()
+        Library:Notify({ Title = "Time", Content = "Время восстановлено", Duration = 3 })
+    end,
+})
+
+local AtmoGroup = Tabs.Visuals:AddRightGroupbox("Atmosphere")
+AtmoGroup:AddToggle("fog", {
+    Text = "Fog", Default = false,
+    Callback = function(v)
+        STATE.fogEnabled = v
+        if v then applyFog() else restoreFog() end
+    end,
+})
+AtmoGroup:AddToggle("spin", {
+    Text = "Spin", Default = false,
+    Callback = function(v)
+        STATE.spinEnabled = v
+        if v then startSpin() else stopSpin() end
+    end,
+})
+AtmoGroup:AddSlider("spinSpeed", {
+    Text = "Spin Speed", Default = 15,
+    Min = 5, Max = 40, Rounding = 1,
+    Callback = function(v) STATE.spinSpeed = v end,
+})
+
+-- ============================================
+--   UI: NAMES TAB
+-- ============================================
+
+local NamesGroup = Tabs.Names:AddLeftGroupbox("Drone Names")
+NamesGroup:AddToggle("showDroneName", {
+    Text = "Show Drone Name", Default = true,
+    Callback = function(v) STATE.showDroneName = v end,
+})
+NamesGroup:AddToggle("showDroneType", {
+    Text = "Show Drone Type", Default = true,
+    Callback = function(v) STATE.showDroneType = v end,
+})
+NamesGroup:AddToggle("showDroneDist", {
+    Text = "Show Distance", Default = true,
+    Callback = function(v) STATE.showDroneDist = v end,
+})
+
+local NamesStyleGroup = Tabs.Names:AddRightGroupbox("Style")
+NamesStyleGroup:AddSlider("nameFontSize", {
+    Text = "Font Size", Default = 14,
+    Min = 8, Max = 24, Rounding = 1,
+    Callback = function(v) STATE.nameFontSize = v end,
+})
+NamesStyleGroup:AddDropdown("nameColorMode", {
+    Text = "Color Mode",
+    Values = { "team", "white", "cyan" },
+    Default = "team",
+    Callback = function(v) STATE.nameColorMode = v end,
+})
+
+-- ============================================
+--   UI: AIM TAB
+-- ============================================
+
+local AimGroup = Tabs.Aim:AddLeftGroupbox("Combat")
+AimGroup:AddToggle("killAll", {
+    Text = "Kill All", Default = false,
+    Callback = function(v)
+        STATE.killAll = v
+        if v then task.spawn(startKillAll) end
+    end,
+})
+AimGroup:AddToggle("killRockets", {
+    Text = "Kill Rockets", Default = false,
+    Tooltip = "Сбивает только ракеты (X101, Flamingo, Neptun, Kalibr, Tomahawk, Shadow, Ten)",
+    Callback = function(v)
+        STATE.killRockets = v
+        if v then
+            task.spawn(startKillRockets)
+        else
+            stopKillRockets()
+        end
+    end,
+})
+AimGroup:AddToggle("aimbot", {
+    Text = "Aimbot (Camera)", Default = false,
+    Callback = function(v)
+        STATE.aimbotEnabled = v
+        if v then startAimbot() else stopAimbot() end
+    end,
+})
+AimGroup:AddSlider("aimbotFov", {
+    Text = "Aimbot FOV", Default = 300,
+    Min = 30, Max = 1000, Rounding = 1,
+    Callback = function(v) STATE.aimbotFov = v end,
+})
+AimGroup:AddSlider("aimbotSmooth", {
+    Text = "Aimbot Smooth", Default = 20,
+    Min = 1, Max = 100, Rounding = 1,
+    Callback = function(v) STATE.aimbotSmooth = v / 100 end,
+})
+AimGroup:AddSlider("killDelay", {
+    Text = "Kill Delay", Default = 25,
+    Min = 10, Max = 100, Rounding = 1,
+    Callback = function(v) STATE.killDelay = v / 100 end,
+})
+
+local HitboxGroup = Tabs.Aim:AddRightGroupbox("Hitbox Expander")
+HitboxGroup:AddToggle("hitbox", {
+    Text = "Enable Hitbox", Default = false,
+    Callback = function(v)
+        STATE.hitboxEnabled = v
+        if not v then stopHitbox() end
+    end,
+})
+HitboxGroup:AddSlider("hitboxSize", {
+    Text = "Hitbox Size", Default = 15,
+    Min = 2, Max = 60, Rounding = 1,
+    Callback = function(v) STATE.hitboxSize = v end,
+})
+HitboxGroup:AddToggle("hitboxVisible", {
+    Text = "Show Hitbox (Red)", Default = true,
+    Callback = function(v)
+        STATE.hitboxVisible = v
+        if not v then
+            for drone, _ in pairs(hitboxHighlights) do
+                local hl = hitboxHighlights[drone]
+                if hl then hl:Destroy(); hitboxHighlights[drone] = nil end
+            end
+        end
+    end,
+})
+
+-- ============================================
+--   UI: MISC TAB
+-- ============================================
+
+local MiscGroup = Tabs.Misc:AddLeftGroupbox("Movement")
+MiscGroup:AddToggle("fly", {
+    Text = "Fly (Old)", Default = false,
+    Callback = function(v)
+        STATE.flyEnabled = v
+        if v then startFly() else stopFly() end
+    end,
+})
+MiscGroup:AddToggle("flight", {
+    Text = "Flight (New, WASD+Space+Shift)", Default = false,
+    Tooltip = "Space — вверх, LeftShift — вниз, WASD — движение",
+    Callback = function(v)
+        STATE.flightEnabled = v
+        if v then startFlight() else stopFlight() end
+    end,
+})
+MiscGroup:AddSlider("flightSpeed", {
+    Text = "Flight Speed", Default = 100,
+    Min = 20, Max = 300, Rounding = 1,
+    Callback = function(v) STATE.flightSpeed = v end,
+})
+MiscGroup:AddSlider("flySpeed", {
+    Text = "Fly Speed (Old)", Default = 60,
+    Min = 20, Max = 200, Rounding = 1,
+    Callback = function(v) STATE.flySpeed = v end,
+})
+MiscGroup:AddToggle("speed", {
+    Text = "Speed Hack", Default = false,
+    Callback = function(v)
+        STATE.speedEnabled = v
+        if v then startSpeed() else stopSpeed() end
+    end,
+})
+MiscGroup:AddSlider("speedValue", {
+    Text = "Speed Value", Default = 32,
+    Min = 16, Max = 200, Rounding = 1,
+    Callback = function(v)
+        STATE.speedValue = v
+        applySpeed()
+    end,
+})
+MiscGroup:AddToggle("jump", {
+    Text = "Jump Power", Default = false,
+    Callback = function(v)
+        STATE.jumpEnabled = v
+        if v then startJump() else stopJump() end
+    end,
+})
+MiscGroup:AddSlider("jumpValue", {
+    Text = "Jump Value", Default = 75,
+    Min = 50, Max = 300, Rounding = 1,
+    Callback = function(v)
+        STATE.jumpValue = v
+        applyJump()
+    end,
+})
+MiscGroup:AddToggle("infJump", {
+    Text = "Infinite Jump", Default = false,
+    Callback = function(v)
+        STATE.infJumpEnabled = v
+        if v then startInfJump() else stopInfJump() end
+    end,
+})
+MiscGroup:AddToggle("noclip", {
+    Text = "Noclip", Default = false,
+    Callback = function(v)
+        STATE.noclipEnabled = v
+        if v then startNoclip() else stopNoclip() end
+    end,
+})
+
+local MiscGroup2 = Tabs.Misc:AddRightGroupbox("Utility")
+MiscGroup2:AddToggle("antiAfk", {
+    Text = "Anti-AFK", Default = false,
+    Callback = function(v)
+        STATE.antiAfkEnabled = v
+        if v then startAntiAfk() else stopAntiAfk() end
+    end,
+})
+MiscGroup2:AddToggle("spinBot", {
+    Text = "Spin Bot 🌀", Default = false,
+    Tooltip = "Крутит персонажа очень быстро",
+    Callback = function(v)
+        STATE.spinBotEnabled = v
+        if v then startSpinBot() else stopSpinBot() end
+    end,
+})
+MiscGroup2:AddSlider("spinBotSpeed", {
+    Text = "Spin Bot Speed", Default = 20,
+    Min = 1, Max = 180, Rounding = 1,
+    Callback = function(v) STATE.spinBotSpeed = v end,
+})
+MiscGroup2:AddToggle("autoFarm", {
+    Text = "Auto Farm 🎯", Default = false,
+    Tooltip = "Автоматически телепортируется к ближайшему дрону",
+    Callback = function(v)
+        STATE.autoFarmEnabled = v
+        if v then task.spawn(startAutoFarm) else stopAutoFarm() end
+    end,
+})
+MiscGroup2:AddSlider("autoFarmRadius", {
+    Text = "Auto Farm Radius", Default = 500,
+    Min = 50, Max = 5000, Rounding = 10,
+    Callback = function(v) STATE.autoFarmRadius = v end,
+})
+MiscGroup2:AddButton({
+    Text = "🔄 Reset Character",
+    Func = function()
+        local char = player.Character
+        if char then
+            local hum = char:FindFirstChildOfClass("Humanoid")
+            if hum then hum.Health = 0 end
+        end
+    end,
+})
+MiscGroup2:AddButton({
+    Text = "🧹 Clear Drones Cache",
+    Func = function()
+        for drone, _ in pairs(espData) do removeAllFor(drone) end
+        espData, hlData, tracerData = {}, {}, {}
+        droneCache = {}
+        Library:Notify({ Title = "Misc", Content = "Кэш дронов очищен", Duration = 3 })
+    end,
+})
+
+-- Инфо-бокс с счётчиками
+local InfoGroup = Tabs.Misc:AddLeftGroupbox("Info")
+InfoGroup:AddLabel("Drones: " .. tostring(STATE.droneCounter))
+
+-- ============================================
+--   ESP DEFENDERS
+-- ============================================
+
+local DEFENDER_COLOR = Color3.fromRGB(50, 150, 255)
+local defHL = {}
+local defBox = {}
+local defTracer = {}
+local defName = {}
+local defVertical = {}
+local DEFENDERS = {}
+
+local function isDefender(plr)
+    if plr == player then return false end
+    if not plr.Team then return false end
+    return plr.Team.Name == "Defenders"
+end
+
+local function createDefHL(plr)
+    if not plr.Character then return end
+    if defHL[plr] then
+        defHL[plr].Adornee = plr.Character
+        return
+    end
+    local hl = Instance.new("Highlight")
+    hl.Name = "DefenderHL"
+    hl.Adornee = plr.Character
+    hl.FillTransparency = 1
+    hl.OutlineColor = DEFENDER_COLOR
+    hl.OutlineTransparency = 0
+    hl.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+    hl.Parent = CoreGui
+    defHL[plr] = hl
+end
+
+local function createDefBox(plr)
+    if defBox[plr] then return end
+    local t = Drawing.new("Line")
+    local b = Drawing.new("Line")
+    local l = Drawing.new("Line")
+    local r = Drawing.new("Line")
+    for _, ln in ipairs({t, b, l, r}) do
+        ln.Thickness = 1.5
+        ln.Color = DEFENDER_COLOR
+        ln.Transparency = 0.9
+        ln.Visible = false
+    end
+    defBox[plr] = { T = t, B = b, L = l, R = r }
+end
+
+local function createDefTracer(plr)
+    if defTracer[plr] then return end
+    local line = Drawing.new("Line")
+    line.Thickness = 1.5
+    line.Color = DEFENDER_COLOR
+    line.Transparency = 0.7
+    line.Visible = false
+    defTracer[plr] = line
+end
+
+local function createDefName(plr)
+    if defName[plr] then return end
+    local txt = Drawing.new("Text")
+    txt.Size = 14
+    txt.Center = true
+    txt.Outline = true
+    txt.OutlineColor = Color3.new(0, 0, 0)
+    txt.Color = Color3.fromRGB(200, 220, 255)
+    txt.Font = 2
+    txt.Text = plr.Name
+    txt.Visible = false
+    defName[plr] = txt
+end
+
+local function createDefVertical(plr)
+    if defVertical[plr] then return end
+    local txt = Drawing.new("Text")
+    txt.Size = 11
+    txt.Center = false
+    txt.Outline = true
+    txt.OutlineColor = Color3.new(0, 0, 0)
+    txt.Color = Color3.fromRGB(100, 180, 255)
+    txt.Font = 3
+    txt.Text = "DEFENDERS"
+    txt.Visible = false
+    defVertical[plr] = txt
+end
+
+local function removeDefAll(plr)
+    if defHL[plr] then defHL[plr]:Destroy(); defHL[plr] = nil end
+    if defBox[plr] then
+        for _, l in pairs(defBox[plr]) do l:Remove() end
+        defBox[plr] = nil
+    end
+    if defTracer[plr] then defTracer[plr]:Remove(); defTracer[plr] = nil end
+    if defName[plr] then defName[plr]:Remove(); defName[plr] = nil end
+    if defVertical[plr] then defVertical[plr]:Remove(); defVertical[plr] = nil end
+end
+
+task.spawn(function()
+    while task.wait(0.3) do
+        if not STATE.espDefender then
+            for plr, _ in pairs(DEFENDERS) do
+                removeDefAll(plr)
+            end
+            DEFENDERS = {}
+        else
+            local current = {}
+            for _, plr in ipairs(Players:GetPlayers()) do
+                if isDefender(plr) and plr.Character then
+                    current[plr] = true
+                    DEFENDERS[plr] = true
+                    createDefHL(plr)
+                    createDefBox(plr)
+                    createDefTracer(plr)
+                    createDefName(plr)
+                    createDefVertical(plr)
+                end
+            end
+            for plr, _ in pairs(DEFENDERS) do
+                if not current[plr] then
+                    removeDefAll(plr)
+                    DEFENDERS[plr] = nil
+                end
+            end
+        end
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if not STATE.espDefender then return end
+    local screenSize = camera.ViewportSize
+    local startX = screenSize.X / 2
+    local startY = screenSize.Y
+
+    for plr, _ in pairs(DEFENDERS) do
+        if plr.Character then
+            local root = plr.Character:FindFirstChild("HumanoidRootPart")
+            if root then
+                local pos = camera:WorldToViewportPoint(root.Position)
+                if pos.Z <= 0 then
+                    local box = defBox[plr]
+                    if box then for _, l in pairs(box) do l.Visible = false end end
+                    local n = defName[plr]
+                    if n then n.Visible = false end
+                    local v = defVertical[plr]
+                    if v then v.Visible = false end
+                else
+                    local box = defBox[plr]
+                    if box then
+                        local studToPixel = 100 / pos.Z
+                        local halfW = 2.2 * studToPixel
+                        local halfH = 3.2 * studToPixel
+                        halfW = math.max(halfW, 10)
+                        halfH = math.max(halfH, 16)
+                        halfW = math.min(halfW, 45)
+                        halfH = math.min(halfH, 70)
+                        local minX = pos.X - halfW
+                        local maxX = pos.X + halfW
+                        local minY = pos.Y - halfH
+                        local maxY = pos.Y + halfH
+                        box.T.From = Vector2.new(minX, minY)
+                        box.T.To   = Vector2.new(maxX, minY)
+                        box.B.From = Vector2.new(minX, maxY)
+                        box.B.To   = Vector2.new(maxX, maxY)
+                        box.L.From = Vector2.new(minX, minY)
+                        box.L.To   = Vector2.new(minX, maxY)
+                        box.R.From = Vector2.new(maxX, minY)
+                        box.R.To   = Vector2.new(maxX, maxY)
+                        for _, l in pairs(box) do l.Visible = true end
+                        local name = defName[plr]
+                        if name then
+                            name.Text = plr.Name
+                            name.Position = Vector2.new(pos.X, minY - 14)
+                            name.Visible = true
+                        end
+                        local vert = defVertical[plr]
+                        if vert then
+                            vert.Text = "D\nE\nF\nE\nN\nD\nE\nR\nS"
+                            vert.Position = Vector2.new(minX - 12, minY)
+                            vert.Visible = true
+                        end
+                    end
+                    local tracer = defTracer[plr]
+                    if tracer then
+                        tracer.From = Vector2.new(startX, startY)
+                        tracer.To = Vector2.new(pos.X, pos.Y)
+                        tracer.Visible = true
+                    end
+                end
+            end
+        end
+    end
+end)
+
+-- ============================================
+--   SAVE MANAGER + THEME
+-- ============================================
+
+ThemeManager:SetLibrary(Library)
+SaveManager:SetLibrary(Library)
+SaveManager:IgnoreThemeSettings()
+SaveManager:SetIgnoreIndexes({})
+ThemeManager:SetFolder("Rooeltex")
+SaveManager:SetFolder("Rooeltex/Pantsir")
+SaveManager:BuildConfigSection(Tabs["UI Settings"])
+ThemeManager:ApplyToTab(Tabs["UI Settings"])
+
+task.spawn(function()
+    task.wait(0.1)
+    pcall(function()
+        ThemeManager:SetLibrary(Library)
+        Library:SetTheme("Amethyst")
+    end)
+end)
+
+-- ============================================
+--   СТАРТ
+-- ============================================
+
+Window:SelectTab(1)
+Library:Notify({
+    Title = "Rooeltex",
+    Content = "v20 • Фиолетовая тема + все функции",
+    Duration = 5,
+})
+print("═══════════════════════════════")
+print("✅ Rooeltex v20 загружен")
+print("🟣 Тема: Amethyst (фиолетовая)")
+print("═══════════════════════════════")
